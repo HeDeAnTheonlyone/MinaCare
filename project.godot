@@ -1,0 +1,50 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="minawan_cursor_follow"
+config/version="0.1.0"
+run/main_scene="res://Scenes/Main.tscn"
+config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://minawan_icon.png"
+
+[autoload]
+
+Manager="*res://Scripts/Manager.cs"
+
+[display]
+
+window/size/mode=3
+window/size/initial_position_type=3
+window/size/resizable=false
+window/size/borderless=true
+window/size/always_on_top=true
+window/size/transparent=true
+window/size/extend_to_title=true
+window/size/no_focus=true
+window/energy_saving/keep_screen_on=false
+window/subwindows/embed_subwindows=false
+window/per_pixel_transparency/allowed=true
+window/vsync/vsync_mode=0
+
+[dotnet]
+
+project/assembly_name="minawan_cursor_follow"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)
+viewport/transparent_background=true

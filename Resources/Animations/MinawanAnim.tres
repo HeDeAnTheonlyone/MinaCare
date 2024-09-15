@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://c7qxwiobr4kwe"]
+
+[ext_resource type="Texture2D" uid="uid://q3h2y40tha3" path="res://Assets/MinawanPurple.png" id="1_41fvl"]
+[ext_resource type="Texture2D" uid="uid://oe7jirkxvdi6" path="res://Assets/MinawanPurpleWalk.png" id="2_pp5g6"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_41fvl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pp5g6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]

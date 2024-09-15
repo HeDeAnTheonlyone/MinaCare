@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj71puvunqr5m"]
+
+[ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_4k01c"]
+[ext_resource type="Script" path="res://Scripts/Minawan.cs" id="2_gddjk"]
+
+[node name="Minawan" type="AnimatedSprite2D"]
+sprite_frames = ExtResource("1_4k01c")
+script = ExtResource("2_gddjk")
