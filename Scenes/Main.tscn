@@ -6,9 +6,3 @@
 
 [node name="Minawan" parent="." instance=ExtResource("1_4nd6y")]
 frame = 1
-
-[node name="MinaShape" type="Line2D" parent="Minawan"]
-visible = false
-points = PackedVector2Array(-215, -173, -93, -192, 91, -192, 201, -176, 232, -162, 257, -141, 261, -35, 258, 27, 250, 180, 170, 193, -43, 193, -249, 185, -257, 132, -258, -64, -255, -143)
-width = 0.0
-default_color = Color(0, 0, 0, 0)

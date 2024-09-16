@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minawan_cursor_follow", "minawan_cursor_follow.csproj", "{18149517-B5FD-4551-8154-4974406A101A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mina_care", "mina_care.csproj", "{18149517-B5FD-4551-8154-4974406A101A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
