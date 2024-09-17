@@ -19,6 +19,5 @@ shape = SubResource("RectangleShape2D_wgrft")
 [node name="WanWanSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_lmcl5")
 volume_db = -10.0
-bus = &"SFX"
 
 [connection signal="input_event" from="Area" to="." method="OnClickMinawan"]

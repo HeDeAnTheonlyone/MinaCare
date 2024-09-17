@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpuat7h2hgetl"]
-
-[ext_resource type="PackedScene" uid="uid://bj71puvunqr5m" path="res://Objects/Minawan.tscn" id="1_4nd6y"]
-
-[node name="Main" type="Node2D"]
-
-[node name="Minawan" parent="." instance=ExtResource("1_4nd6y")]
-frame = 1

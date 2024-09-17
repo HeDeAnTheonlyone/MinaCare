@@ -15,38 +15,25 @@ private AudioStreamPlayer wanWanSFX;
 private Line2D minaShape;
 private float speed = 0;
 private Vector2 prevPos = new Vector2();
-private Vector2 centerOffset;
 private Vector2I windowSize = Vector2I.Zero;
+private Window window;
 
 
 
 	public override void _Ready()
 	{
-		UseRandomMinawanTexture();
-
+		window = GetWindow();
 		wanWanSFX = GetNode<AudioStreamPlayer>("WanWanSFX");
 
+		UseRandomMinawanTexture();
 		Scale = new Vector2(MinaScale, MinaScale);
-		centerOffset = SpriteFrames.GetFrameTexture("default", 0).GetSize() * MinaScale / 2;
-
-		PassthroughPolygon = new Vector2[] {
-			centerOffset * -1,
-			new Vector2(centerOffset.X, -centerOffset.Y),
-			centerOffset,
-			new Vector2(-centerOffset.X, centerOffset.Y)
-		};
-
-		for (int i = 0; i < DisplayServer.GetScreenCount(); i++)
-		{
-			windowSize += DisplayServer.ScreenGetSize(i);
-		}
-		GetWindow().Position = Vector2I.Zero;
-		GetWindow().Size = windowSize;
-
+		GeneratePassthroughPolygon();
+		SetUpWindow();
 		Position = GetGlobalMousePosition();
 	}
 
-	public override void _Process(double delta)
+	
+    public override void _Process(double delta)
 	{
 		Vector2 mousePos = GetGlobalMousePosition();
 
@@ -67,6 +54,7 @@ private Vector2I windowSize = Vector2I.Zero;
 		prevPos = Position;
 	}
 
+
 	private void UseRandomMinawanTexture()
 	{
 		DirAccess minawanCollectionDir = DirAccess.Open("./Minawan");
@@ -86,20 +74,47 @@ private Vector2I windowSize = Vector2I.Zero;
 		SpriteFrames.SetFrame("default", 1, ImageTexture.CreateFromImage(Image.LoadFromFile($"./Minawan/{minawan}/Walk.png")));
 	}
 
+
 	private void UpdateInteractableShape()
 	{
 		Vector2[] newPoints = new Vector2[PassthroughPolygon.Length];
 
-		for (int i = 0; i < newPoints.Length; i++)
-		{
-			newPoints[i] = Position + PassthroughPolygon[i];
-		}
-
-		GetWindow().MousePassthroughPolygon = newPoints;
+		for (int i = 0; i < newPoints.Length; i++) newPoints[i] = Position + PassthroughPolygon[i];
+		
+		window.MousePassthroughPolygon = newPoints;
 	}
 
+
+	private void GeneratePassthroughPolygon()
+	{
+		Vector2 spriteHalfSideLenght = SpriteFrames.GetFrameTexture("default", 0).GetSize() * MinaScale / 2;
+
+		PassthroughPolygon = new Vector2[] {
+			spriteHalfSideLenght * -1,
+			new Vector2(spriteHalfSideLenght.X, -spriteHalfSideLenght.Y),
+			spriteHalfSideLenght,
+			new Vector2(-spriteHalfSideLenght.X, spriteHalfSideLenght.Y)
+		};
+	}
+
+
+	private void SetUpWindow()
+	{
+		for (int i = 0; i < DisplayServer.GetScreenCount(); i++) windowSize += DisplayServer.ScreenGetSize(i);
+		window.Position = Vector2I.Zero;
+		window.Size = windowSize;
+		window.Unfocusable = true;
+	}
+
+
+	#region Signal Callbacks
 	private void OnClickMinawan(Node viewport, InputEvent evnt, int shape_idx)
 	{
-		if (evnt.IsActionPressed("LeftClick")) wanWanSFX.Play();  
+		if (evnt.IsActionPressed("LeftClick")) wanWanSFX.Play();
+		if (evnt.IsActionReleased("AltLeftClick"))
+		{
+
+		}
 	}
+	#endregion
 }
