@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bj71puvunqr5m"]
+[gd_scene load_steps=8 format=3 uid="uid://bj71puvunqr5m"]
 
 [ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_4k01c"]
 [ext_resource type="Script" path="res://Scripts/Minawan.cs" id="2_gddjk"]
 [ext_resource type="AudioStream" uid="uid://41d2p08vx48v" path="res://Audio/wanwan.ogg" id="3_lmcl5"]
+[ext_resource type="Script" path="res://Scripts/MinawanActionMenu.cs" id="4_37jw1"]
+[ext_resource type="Texture2D" uid="uid://cjg5kipv0vc2u" path="res://Assets/Gear.png" id="5_5arv5"]
+[ext_resource type="Texture2D" uid="uid://dsmm5xpfbb7y5" path="res://Assets/GearMinawan.png" id="6_j7g78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgrft"]
 size = Vector2(400, 350)
@@ -20,4 +23,32 @@ shape = SubResource("RectangleShape2D_wgrft")
 stream = ExtResource("3_lmcl5")
 volume_db = -10.0
 
+[node name="ActionMenu" type="Window" parent="."]
+transparent_bg = true
+position = Vector2i(0, 36)
+size = Vector2i(260, 128)
+visible = false
+wrap_controls = true
+unresizable = true
+transparent = true
+popup_window = true
+script = ExtResource("4_37jw1")
+
+[node name="Control" type="HBoxContainer" parent="ActionMenu"]
+offset_right = 260.0
+offset_bottom = 128.0
+size_flags_horizontal = 8
+
+[node name="MinawanSettings" type="TextureButton" parent="ActionMenu/Control"]
+layout_mode = 2
+texture_normal = ExtResource("6_j7g78")
+stretch_mode = 4
+
+[node name="Settings" type="TextureButton" parent="ActionMenu/Control"]
+layout_mode = 2
+texture_normal = ExtResource("5_5arv5")
+stretch_mode = 4
+
 [connection signal="input_event" from="Area" to="." method="OnClickMinawan"]
+[connection signal="about_to_popup" from="ActionMenu" to="ActionMenu" method="OnAboutToPopUp"]
+[connection signal="close_requested" from="ActionMenu" to="ActionMenu" method="OnCloseRequest"]

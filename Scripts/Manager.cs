@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 
@@ -6,8 +7,10 @@ public partial class Manager : Node
     public static Manager Singleton { get; private set; }
     public static Dictionary Settings { get; private set; } = new Dictionary
     {
-        { "show_splash_screen", true }
+        //TODO change to true 
+        { "show_splash_screen", false }
     };
+    public static Stack<string> LastScenes = new Stack<string>();
 
 
 
@@ -15,6 +18,7 @@ public partial class Manager : Node
     {
         SingletonSetup();
     }
+
 
     private void SingletonSetup() {
         if (Singleton != null) QueueFree();
@@ -28,5 +32,23 @@ public partial class Manager : Node
         GetWindow().Unfocusable = true;
     }
 
-    public void SwitchScene(string sceneName) => GetTree().ChangeSceneToFile($"res://Scenes/{sceneName}.tscn"); 
+
+    public static void ApplyDefaultWindowSettings(Window window)
+    {
+        int primaryScreen = DisplayServer.GetPrimaryScreen();
+        Vector2I screenOrigin = DisplayServer.ScreenGetPosition(primaryScreen);
+        Vector2I screenSize = DisplayServer.ScreenGetSize(primaryScreen);
+        window.Size = screenSize / 2;
+        window.Position = screenOrigin + screenSize / 4;
+        window.Borderless = false;
+        window.TransparentBg = false;
+        window.Transparent = false;
+        window.MousePassthroughPolygon = new Vector2[] { };
+        window.Unfocusable = false;
+        window.ContentScaleMode =  Window.ContentScaleModeEnum.CanvasItems;
+        window.ContentScaleAspect =  Window.ContentScaleAspectEnum.Expand;
+    }
+
+
+    public void SwitchScene(string sceneName) => GetTree().ChangeSceneToFile($"res://Scenes/{sceneName}.tscn");
 }

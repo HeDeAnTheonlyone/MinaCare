@@ -1,0 +1,92 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg26yidng6am0"]
+
+[ext_resource type="Script" path="res://Scripts/MinawanSettings.cs" id="1_st0w3"]
+
+[node name="MinawanSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_st0w3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Scale" type="HSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SCALE"
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/Scale/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/VBoxContainer/Scale/HSplitContainer"]
+layout_mode = 2
+allow_greater = true
+allow_lesser = true
+tick_count = 85
+ticks_on_borders = true
+
+[node name="MaxSpeed" type="HSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/MaxSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAX_SPEED"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/MaxSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Acceleration" type="HSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/Acceleration"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ACCELERATION"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/Acceleration"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DecelerationDistance" type="HSplitContainer" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/VBoxContainer/DecelerationDistance"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DECELERATION_DISTANCE"
+horizontal_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/VBoxContainer/DecelerationDistance"]
+layout_mode = 2
+size_flags_horizontal = 3
