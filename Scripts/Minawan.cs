@@ -1,15 +1,17 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Linq;
+using System.Reflection;
 
 
 
 public partial class Minawan : AnimatedSprite2D
 {
 [Export] public float MinaScale { get; set; } = 0.2f;
-[Export] public float MaxSpeed { get; set; } = 250;
+[Export] public float MaxSpeed { get; set; } = 250f;
 [Export] public float Acceleration { get; set; } = 5f;
-[Export] public float StoppingDistance { get; set; } = 125;
+[Export] public float DecelerationDistance { get; set; } = 125f;
 private Vector2[] passthroughPolygon;
 private AudioStreamPlayer wanWanSFX;
 private Window actionMenu;
@@ -25,6 +27,7 @@ private Vector2 prevPos = new Vector2();
 		actionMenu = GetNode<Window>("ActionMenu");
 		window = GetWindow();
 
+		LoadMinawanData();
 		UseRandomMinawanTexture();
 		Scale = new Vector2(MinaScale, MinaScale);
 		GeneratePassthroughPolygon();
@@ -35,9 +38,15 @@ private Vector2 prevPos = new Vector2();
 
     public override void _Process(double delta)
 	{
+		MoveMinawan((float)delta);
+	}
+
+
+	private void MoveMinawan(float delta)
+	{
 		Vector2 mousePos = GetGlobalMousePosition();
 
-		if (Position.DistanceTo(mousePos) > StoppingDistance) speed = Math.Clamp(speed + Acceleration, 0, MaxSpeed);
+		if (Position.DistanceTo(mousePos) > DecelerationDistance) speed = Math.Clamp(speed + Acceleration, 0, MaxSpeed);
 		else speed = Math.Clamp(speed - Acceleration * 2, 0, MaxSpeed);
 
 		Position = Position.MoveToward(mousePos, speed * (float)delta);
@@ -58,7 +67,6 @@ private Vector2 prevPos = new Vector2();
 	private void UseRandomMinawanTexture()
 	{
 		DirAccess minawanCollectionDir = DirAccess.Open("./Minawan");
-		GD.Print(minawanCollectionDir.GetCurrentDir());
 
 		if (minawanCollectionDir == null) return;
 
@@ -73,6 +81,48 @@ private Vector2 prevPos = new Vector2();
 		SpriteFrames.SetFrame("default", 0, ImageTexture.CreateFromImage(Image.LoadFromFile($"./Minawan/{minawan}/Stand.png")));
 		SpriteFrames.SetFrame("default", 1, ImageTexture.CreateFromImage(Image.LoadFromFile($"./Minawan/{minawan}/Walk.png")));
 	}
+
+
+private void LoadMinawanData()
+{
+	string dataString; 
+	using (FileAccess file = FileAccess.Open("user://minawan_settings.json", FileAccess.ModeFlags.Read))
+	{
+		if (FileAccess.GetOpenError() != Error.Ok)
+		{
+			SaveMinawanData();
+			return;
+		}
+		
+		dataString = file.GetAsText();
+	}
+
+	Dictionary data = (Dictionary)Json.ParseString(dataString);
+	
+	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == typeof(Minawan)).ToArray();
+
+	foreach (PropertyInfo property in properties)
+	{
+		GetType().GetProperty(property.Name).SetValue(this, (float)data[property.Name]);
+	}
+}
+
+
+private void SaveMinawanData()
+{
+	Dictionary data = new Dictionary();
+	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == typeof(Minawan)).ToArray();
+
+	foreach (PropertyInfo property in properties)
+	{
+		data.Add(property.Name, (float)property.GetValue(this));
+	}
+
+	using (FileAccess file = FileAccess.Open("user://minawan_settings.json", FileAccess.ModeFlags.Write))
+	{
+		file.StoreString(Json.Stringify(data, "\t"));
+	};
+}
 
 
 	private void UpdateInteractableShape()
@@ -104,7 +154,13 @@ private Vector2 prevPos = new Vector2();
 		for (int i = 0; i < DisplayServer.GetScreenCount(); i++) windowSize += DisplayServer.ScreenGetSize(i);
 		window.Position = Vector2I.Zero;
 		window.Size = windowSize;
+		window.Borderless = true;
+		window.TransparentBg = true;
+		window.Transparent =
 		window.Unfocusable = true;
+		window.Unfocusable = true;
+		window.ContentScaleMode = Window.ContentScaleModeEnum.Disabled;
+		window.ContentScaleAspect = Window.ContentScaleAspectEnum.Keep;
 		window.Title = TranslationServer.Translate("WALKIES");
 	}
 

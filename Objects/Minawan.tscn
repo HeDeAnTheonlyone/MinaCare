@@ -26,7 +26,7 @@ volume_db = -10.0
 [node name="ActionMenu" type="Window" parent="."]
 transparent_bg = true
 position = Vector2i(0, 36)
-size = Vector2i(260, 128)
+size = Vector2i(300, 128)
 visible = false
 wrap_controls = true
 unresizable = true
@@ -52,3 +52,5 @@ stretch_mode = 4
 [connection signal="input_event" from="Area" to="." method="OnClickMinawan"]
 [connection signal="about_to_popup" from="ActionMenu" to="ActionMenu" method="OnAboutToPopUp"]
 [connection signal="close_requested" from="ActionMenu" to="ActionMenu" method="OnCloseRequest"]
+[connection signal="pressed" from="ActionMenu/Control/MinawanSettings" to="ActionMenu" method="OnMinawanSettingsPressed"]
+[connection signal="pressed" from="ActionMenu/Control/Settings" to="ActionMenu" method="OnSettingsPressed"]

@@ -18,6 +18,6 @@ public partial class Splash : Control
 			tween.TweenProperty(minaProd, "modulate:a", 0, 1.1f);
 		}
 		
-		tween.TweenCallback(Callable.From(() => Manager.Singleton.SwitchScene("Walkies")));
+		tween.TweenCallback(Callable.From(() => Manager.SwitchScene("Walkies")));
 	}
 }

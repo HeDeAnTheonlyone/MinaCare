@@ -15,4 +15,20 @@ public partial class MinawanActionMenu : Window
 		AlwaysOnTop = false;
 		Hide();
 	}
+
+
+	private void OnMinawanSettingsPressed()
+	{
+		AlwaysOnTop= false;
+		Manager.ApplyDefaultWindowSettings();
+		Manager.SwitchScene("MinawanSettings");
+	}
+
+
+	private void OnSettingsPressed()
+	{
+		AlwaysOnTop = false;
+		Manager.ApplyDefaultWindowSettings();
+		Manager.SwitchScene("Settings");
+	}
 }

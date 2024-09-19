@@ -1,15 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://6l18k3cqecfp"]
+[gd_scene load_steps=3 format=3 uid="uid://bg26yidng6am0"]
 
-[ext_resource type="Script" path="res://Scripts/Settings.cs" id="1_ob6yn"]
+[ext_resource type="Script" path="res://Scripts/MinawanSettings.cs" id="1_0mabx"]
+[ext_resource type="LabelSettings" uid="uid://cmy2x6ggexv7s" path="res://Themes/SettingsLables.tres" id="2_exe01"]
 
-[node name="Settings" type="Control"]
+[node name="MinawanSettings" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ob6yn")
+script = ExtResource("1_0mabx")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -24,13 +25,174 @@ theme_override_constants/margin_bottom = 50
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="SettingsList" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="Scale" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/Scale"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SCALE"
+label_settings = ExtResource("2_exe01")
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/Scale"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/ScrollContainer/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
 focus_mode = 0
-text = "SHOW_SPLASH_SCREEN"
+alignment = 1
+max_length = 4
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 2.0
+step = 0.01
+allow_greater = true
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="MaxSpeed" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "MAX_SPEED"
+label_settings = ExtResource("2_exe01")
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+alignment = 1
+max_length = 4
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1000.0
+allow_greater = true
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Acceleration" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ACCELERATION"
+label_settings = ExtResource("2_exe01")
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+alignment = 1
+max_length = 4
+editable = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer"]
+layout_mode = 2
+focus_mode = 0
+step = 0.5
+allow_greater = true
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="DecelerationDistance" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DECELERATION_DISTANCE"
+label_settings = ExtResource("2_exe01")
+horizontal_alignment = 1
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+alignment = 1
+max_length = 5
+editable = false
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer"]
+layout_mode = 2
+focus_mode = 0
+max_value = 1000.0
+allow_greater = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="Back" type="Button" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer/HSlider" to="." method="OnMinaScaleChange"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer/HSlider" to="." method="OnMaxSpeedChange"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer/HSlider" to="." method="OnAccelerationChange"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer/HSlider" to="." method="OnDecelerationDistanceChange"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/Back" to="." method="OnBackPressed"]
