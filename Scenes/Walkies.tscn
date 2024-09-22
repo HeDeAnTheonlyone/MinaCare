@@ -6,3 +6,14 @@
 
 [node name="Minawan" parent="." instance=ExtResource("1_iu4v8")]
 frame = 1
+
+[node name="Breadcrumbs" type="Line2D" parent="."]
+visible = false
+default_color = Color(1, 0, 0, 1)
+
+[node name="SummonShape" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(-1, 1.2, 0, -1.5, 1, 1.2, -1.5, -0.5, 1.5, -0.5)
+closed = true
+width = 0.1
+default_color = Color(1, 0, 0, 1)

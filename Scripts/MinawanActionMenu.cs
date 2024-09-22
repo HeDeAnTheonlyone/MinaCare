@@ -31,4 +31,8 @@ public partial class MinawanActionMenu : Window
 		Manager.ApplyDefaultWindowSettings();
 		Manager.SwitchScene("Settings");
 	}
+
+
+	[Signal] public delegate void RequestChangeMinawanEventHandler();
+	private void OnChangeMinawanPressed() => EmitSignal(SignalName.RequestChangeMinawan);
 }

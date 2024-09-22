@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections;
 using System.Linq;
 using System.Reflection;
 
@@ -14,17 +15,23 @@ public partial class Minawan : AnimatedSprite2D
 [Export] public float DecelerationDistance { get; set; } = 125f;
 private Vector2[] passthroughPolygon;
 private AudioStreamPlayer wanWanSFX;
-private Window actionMenu;
+private Line2D breadcrumbs;
+private Line2D summonShape;
+private ArrayList last3Breadcrumbs = new ArrayList();
+private MinawanActionMenu actionMenu;
 private Window window;
 private float speed = 0;
-private Vector2 prevPos = new Vector2();
+private Vector2 prevPos;
 
 
 
 	public override void _Ready()
 	{
 		wanWanSFX = GetNode<AudioStreamPlayer>("WanWanSFX");
-		actionMenu = GetNode<Window>("ActionMenu");
+		breadcrumbs = GetNode<Line2D>("../Breadcrumbs");
+		summonShape = GetNode<Line2D>("../SummonShape");
+		actionMenu = GetNode<MinawanActionMenu>("ActionMenu");
+		actionMenu.RequestChangeMinawan += UseRandomMinawanTexture;
 		window = GetWindow();
 
 		LoadMinawanData();
@@ -33,7 +40,14 @@ private Vector2 prevPos = new Vector2();
 		GeneratePassthroughPolygon();
 		SetUpWindow();
 		Position = GetGlobalMousePosition();
+		last3Breadcrumbs.AddRange(Enumerable.Repeat(Position, 3).ToArray());
 	}
+
+
+    public override void _ExitTree()
+    {
+        actionMenu.RequestChangeMinawan -= UseRandomMinawanTexture;
+    }
 
 
     public override void _Process(double delta)
@@ -46,8 +60,8 @@ private Vector2 prevPos = new Vector2();
 	{
 		Vector2 mousePos = GetGlobalMousePosition();
 
-		if (Position.DistanceTo(mousePos) > DecelerationDistance) speed = Math.Clamp(speed + Acceleration, 0, MaxSpeed);
-		else speed = Math.Clamp(speed - Acceleration * 2, 0, MaxSpeed);
+		if (Position.DistanceTo(mousePos) > DecelerationDistance) speed = Mathf.Clamp(speed + Acceleration, 0, MaxSpeed);
+		else speed = Mathf.Clamp(speed - Acceleration * 2, 0, MaxSpeed);
 
 		Position = Position.MoveToward(mousePos, speed * (float)delta);
 

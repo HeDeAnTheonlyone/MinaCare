@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bj71puvunqr5m"]
+[gd_scene load_steps=9 format=3 uid="uid://bj71puvunqr5m"]
 
 [ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_4k01c"]
 [ext_resource type="Script" path="res://Scripts/Minawan.cs" id="2_gddjk"]
 [ext_resource type="AudioStream" uid="uid://41d2p08vx48v" path="res://Audio/wanwan.ogg" id="3_lmcl5"]
 [ext_resource type="Script" path="res://Scripts/MinawanActionMenu.cs" id="4_37jw1"]
 [ext_resource type="Texture2D" uid="uid://cjg5kipv0vc2u" path="res://Assets/Gear.png" id="5_5arv5"]
+[ext_resource type="Texture2D" uid="uid://bs7iroub7f7e7" path="res://Assets/Reroll.png" id="5_sagnh"]
 [ext_resource type="Texture2D" uid="uid://dsmm5xpfbb7y5" path="res://Assets/GearMinawan.png" id="6_j7g78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgrft"]
@@ -26,7 +27,7 @@ volume_db = -10.0
 [node name="ActionMenu" type="Window" parent="."]
 transparent_bg = true
 position = Vector2i(0, 36)
-size = Vector2i(300, 128)
+size = Vector2i(392, 128)
 visible = false
 wrap_controls = true
 unresizable = true
@@ -34,17 +35,22 @@ transparent = true
 popup_window = true
 script = ExtResource("4_37jw1")
 
-[node name="Control" type="HBoxContainer" parent="ActionMenu"]
+[node name="OptionsList" type="HBoxContainer" parent="ActionMenu"]
 offset_right = 260.0
 offset_bottom = 128.0
 size_flags_horizontal = 8
 
-[node name="MinawanSettings" type="TextureButton" parent="ActionMenu/Control"]
+[node name="ChangeMinawan" type="TextureButton" parent="ActionMenu/OptionsList"]
+layout_mode = 2
+texture_normal = ExtResource("5_sagnh")
+stretch_mode = 4
+
+[node name="MinawanSettings" type="TextureButton" parent="ActionMenu/OptionsList"]
 layout_mode = 2
 texture_normal = ExtResource("6_j7g78")
 stretch_mode = 4
 
-[node name="Settings" type="TextureButton" parent="ActionMenu/Control"]
+[node name="Settings" type="TextureButton" parent="ActionMenu/OptionsList"]
 layout_mode = 2
 texture_normal = ExtResource("5_5arv5")
 stretch_mode = 4
@@ -52,5 +58,6 @@ stretch_mode = 4
 [connection signal="input_event" from="Area" to="." method="OnClickMinawan"]
 [connection signal="about_to_popup" from="ActionMenu" to="ActionMenu" method="OnAboutToPopUp"]
 [connection signal="close_requested" from="ActionMenu" to="ActionMenu" method="OnCloseRequest"]
-[connection signal="pressed" from="ActionMenu/Control/MinawanSettings" to="ActionMenu" method="OnMinawanSettingsPressed"]
-[connection signal="pressed" from="ActionMenu/Control/Settings" to="ActionMenu" method="OnSettingsPressed"]
+[connection signal="pressed" from="ActionMenu/OptionsList/ChangeMinawan" to="ActionMenu" method="OnChangeMinawanPressed"]
+[connection signal="pressed" from="ActionMenu/OptionsList/MinawanSettings" to="ActionMenu" method="OnMinawanSettingsPressed"]
+[connection signal="pressed" from="ActionMenu/OptionsList/Settings" to="ActionMenu" method="OnSettingsPressed"]
