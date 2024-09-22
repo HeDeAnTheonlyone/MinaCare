@@ -12,7 +12,7 @@ public partial class Minawan : AnimatedSprite2D
 [Export] public float MinaScale { get; set; } = 0.2f;
 [Export] public float MaxSpeed { get; set; } = 250f;
 [Export] public float Acceleration { get; set; } = 5f;
-[Export] public float DecelerationDistance { get; set; } = 125f;
+[Export] public float DecelerationDistance { get; set; } = 250f;
 private Vector2[] passthroughPolygon;
 private AudioStreamPlayer wanWanSFX;
 private Line2D breadcrumbs;
@@ -28,8 +28,8 @@ private Vector2 prevPos;
 	public override void _Ready()
 	{
 		wanWanSFX = GetNode<AudioStreamPlayer>("WanWanSFX");
-		breadcrumbs = GetNode<Line2D>("../Breadcrumbs");
-		summonShape = GetNode<Line2D>("../SummonShape");
+		// breadcrumbs = GetNode<Line2D>("../Breadcrumbs");a
+		// summonShape = GetNode<Line2D>("../SummonShape");
 		actionMenu = GetNode<MinawanActionMenu>("ActionMenu");
 		actionMenu.RequestChangeMinawan += UseRandomMinawanTexture;
 		window = GetWindow();
@@ -38,7 +38,6 @@ private Vector2 prevPos;
 		UseRandomMinawanTexture();
 		Scale = new Vector2(MinaScale, MinaScale);
 		GeneratePassthroughPolygon();
-		SetUpWindow();
 		Position = GetGlobalMousePosition();
 		last3Breadcrumbs.AddRange(Enumerable.Repeat(Position, 3).ToArray());
 	}
@@ -99,26 +98,29 @@ private Vector2 prevPos;
 
 private void LoadMinawanData()
 {
-	string dataString; 
-	using (FileAccess file = FileAccess.Open("user://minawan_settings.json", FileAccess.ModeFlags.Read))
+	Dictionary data = Manager.Load("minawan_settings");
+
+	if (data == null)
 	{
-		if (FileAccess.GetOpenError() != Error.Ok)
-		{
-			SaveMinawanData();
-			return;
-		}
-		
-		dataString = file.GetAsText();
+		SaveMinawanData();
+		return;
 	}
 
-	Dictionary data = (Dictionary)Json.ParseString(dataString);
-	
 	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == typeof(Minawan)).ToArray();
+	bool hasUnknownKey = false;
 
 	foreach (PropertyInfo property in properties)
 	{
+		if (!data.ContainsKey(property.Name))
+		{
+			hasUnknownKey = true;
+			continue;
+		}
+
 		GetType().GetProperty(property.Name).SetValue(this, (float)data[property.Name]);
 	}
+
+	if (hasUnknownKey) SaveMinawanData();
 }
 
 
@@ -127,15 +129,9 @@ private void SaveMinawanData()
 	Dictionary data = new Dictionary();
 	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == typeof(Minawan)).ToArray();
 
-	foreach (PropertyInfo property in properties)
-	{
-		data.Add(property.Name, (float)property.GetValue(this));
-	}
+	foreach (PropertyInfo property in properties) data.Add(property.Name, (float)property.GetValue(this));
 
-	using (FileAccess file = FileAccess.Open("user://minawan_settings.json", FileAccess.ModeFlags.Write))
-	{
-		file.StoreString(Json.Stringify(data, "\t"));
-	};
+	Manager.Save(data, "minawan_settings");
 }
 
 
@@ -159,23 +155,6 @@ private void SaveMinawanData()
 			spriteHalfSideLength,
 			new Vector2(-spriteHalfSideLength.X, spriteHalfSideLength.Y)
 		};
-	}
-
-
-	private void SetUpWindow()
-	{
-		Vector2I windowSize = Vector2I.Zero;
-		for (int i = 0; i < DisplayServer.GetScreenCount(); i++) windowSize += DisplayServer.ScreenGetSize(i);
-		window.Position = Vector2I.Zero;
-		window.Size = windowSize;
-		window.Borderless = true;
-		window.TransparentBg = true;
-		window.Transparent =
-		window.Unfocusable = true;
-		window.Unfocusable = true;
-		window.ContentScaleMode = Window.ContentScaleModeEnum.Disabled;
-		window.ContentScaleAspect = Window.ContentScaleAspectEnum.Keep;
-		window.Title = TranslationServer.Translate("WALKIES");
 	}
 
 

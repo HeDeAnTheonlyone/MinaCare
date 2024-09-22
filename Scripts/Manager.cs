@@ -68,6 +68,11 @@ public partial class Manager : Node
     }
 
 
+    /// <summary>
+    /// Loads the file of the given name and returns the data as a dictionary.
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns>Data as dictionary or null if it fails.</returns>
     public static Dictionary Load(string fileName)
     {
         string dataString;

@@ -30,7 +30,7 @@ public partial class MinawanSettings : Control
 		hsDecelerationDistance = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer/HSlider");
 
 		SetUpWindow();
-		LoadSettings();
+		FetchSettings();
 	}
 
 
@@ -40,9 +40,11 @@ public partial class MinawanSettings : Control
 	}
 
 
-	private void LoadSettings()
+	private void FetchSettings()
 	{
 		Dictionary data = Manager.Load("minawan_settings");
+		
+		if (data == null) return;
 
 		//TODO implement a method that uses reflection 
 		foreach (string key in data.Keys.ToArray())

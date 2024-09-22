@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dpuat7h2hgetl"]
+[gd_scene load_steps=3 format=3 uid="uid://dpuat7h2hgetl"]
 
+[ext_resource type="Script" path="res://Scripts/Walkies.cs" id="1_f8lkg"]
 [ext_resource type="PackedScene" uid="uid://bj71puvunqr5m" path="res://Objects/Minawan.tscn" id="1_iu4v8"]
 
 [node name="Walkies" type="Node2D"]
+script = ExtResource("1_f8lkg")
 
 [node name="Minawan" parent="." instance=ExtResource("1_iu4v8")]
 frame = 1
