@@ -10,7 +10,7 @@ public partial class Manager : Node
     {
         //TODO change to true 
         { "show_splash_screen", false },
-        { "language", TranslationServer.GetLocale()}
+        { "language", TranslationServer.GetLocale() }
     };
     public static Stack<string> LastScenes = new Stack<string>();
 
@@ -36,30 +36,58 @@ public partial class Manager : Node
     }
 
 
+    private void SaveSettings() => Save(Settings, "general_settings");
+
+
     private void LoadSettings()
+    {
+        Dictionary data = Load("general_settings");
+        
+        if (data == null)
+        {
+            Save(Settings, "general_settings");
+            return;
+        }
+
+        bool hasUnknownKey = false;
+
+        foreach (string key in Settings.Keys)
+        {
+            if (!data.ContainsKey(key))
+            {
+                hasUnknownKey = true;
+                continue;
+            }
+
+            Settings[key] = data[key];
+        }
+
+        if (hasUnknownKey) SaveSettings();
+
+        TranslationServer.SetLocale((string)Settings["language"]);
+    }
+
+
+    public static Dictionary Load(string fileName)
     {
         string dataString;
 
-        using (FileAccess file = FileAccess.Open("user://general_settings.json", FileAccess.ModeFlags.Read))
+        using (FileAccess file = FileAccess.Open($"user://{fileName}.json", FileAccess.ModeFlags.Read))
         {
-            if (FileAccess.GetOpenError() != Error.Ok)
-            {
-                SaveSettings();
-                return;
-            }
+            if (FileAccess.GetOpenError() != Error.Ok) return null;
 
             dataString = file.GetAsText();
         }
 
-        Settings = (Dictionary)Json.ParseString(dataString);
+        return (Dictionary)Json.ParseString(dataString);
     }
 
 
-    private void SaveSettings()
+    public static void Save(Dictionary data, string fileName)
     {
-        using (FileAccess file = FileAccess.Open("user://general_settings.json", FileAccess.ModeFlags.Write))
+        using (FileAccess file = FileAccess.Open($"user://{fileName}.json", FileAccess.ModeFlags.Write))
         {
-            file.StoreString(Json.Stringify(Settings, "\t"));
+            file.StoreString(Json.Stringify(data, "\t"));
         }
     }
 
@@ -76,6 +104,7 @@ public partial class Manager : Node
         window.TransparentBg = false;
         window.Transparent =
         window.Unfocusable = false;
+        window.AlwaysOnTop = false;
         window.MousePassthroughPolygon = new Vector2[] { };
         window.ContentScaleMode =  Window.ContentScaleModeEnum.CanvasItems;
         window.ContentScaleAspect =  Window.ContentScaleAspectEnum.Expand;

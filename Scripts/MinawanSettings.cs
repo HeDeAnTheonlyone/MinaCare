@@ -42,14 +42,7 @@ public partial class MinawanSettings : Control
 
 	private void LoadSettings()
 	{
-		string dataString;
-
-		using (FileAccess file = FileAccess.Open("user://minawan_settings.json", FileAccess.ModeFlags.Read))
-		{
-			dataString = file.GetAsText();
-		}
-
-		Dictionary data = (Dictionary)Json.ParseString(dataString);
+		Dictionary data = Manager.Load("minawan_settings");
 
 		//TODO implement a method that uses reflection 
 		foreach (string key in data.Keys.ToArray())
@@ -86,10 +79,7 @@ public partial class MinawanSettings : Control
 			{ "DecelerationDistance", hsDecelerationDistance.Value }
 		};
 
-		using (FileAccess file = FileAccess.Open("user://minawan_settings.json", FileAccess.ModeFlags.Write))
-		{
-			file.StoreString(Json.Stringify(data, "\t"));
-		}
+		Manager.Save(data, "minawan_settings");
 	}
 
 

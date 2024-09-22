@@ -4,16 +4,18 @@ public partial class Settings : Control
 {
 	private CheckButton splashScreen;
 	private OptionButton language;
+	private string[] language_codes;
 
 
 
 	public override void _Ready()
 	{
 		splashScreen = GetNode<CheckButton>("MarginContainer/ScrollContainer/VBoxContainer/SplashScreen");
-		// language = GetNode<OptionButton>("MarginContainer/ScrollContainer/VBoxContainer/Language");
-		
+		language = GetNode<OptionButton>("MarginContainer/ScrollContainer/VBoxContainer/Language");
+		language_codes = TranslationServer.GetLoadedLocales();
+
 		SetUpWindow();
-		LoadSettings();
+		FetchSettings();
 	}
 
 
@@ -23,27 +25,20 @@ public partial class Settings : Control
 	}
 
 
-	private void LoadSettings()
+	private void FetchSettings()
 	{
 		splashScreen.ButtonPressed = (bool)Manager.Settings["show_splash_screen"];
 		
-		// string[] allLanguages = TranslationServer.GetLoadedLocales();
-		
-		// for (int i = 0; i < allLanguages.Length; i++)
-		// {
-		// 	language.AddItem(allLanguages[i]);
-		// 	// if ((string)Manager.Settings["language"] == allLanguages[i]) language.Selected = i;
-		// }
-	}
-
-
-	private void SaveSettings()
-	{
-		using(FileAccess file = FileAccess.Open("user://general_settings.json", FileAccess.ModeFlags.Write))
+		string[] allLanguages = TranslationServer.GetLoadedLocales();
+		for (int i = 0; i < allLanguages.Length; i++)
 		{
-			file.StoreString(Json.Stringify(Manager.Settings, "\t"));
+			language.AddItem(TranslationServer.GetLanguageName(allLanguages[i]));
+			if ((string)Manager.Settings["language"] == language_codes[i]) language.Selected = i;
 		}
 	}
+
+
+	private void SaveSettings() => Manager.Save(Manager.Settings, "general_settings");
 
 
 	private void OnSplashScreenToggle(bool value) => Manager.Settings["show_splash_screen"] = value;
@@ -51,9 +46,9 @@ public partial class Settings : Control
 
 	private void OnLanguageSelected(int index)
 	{
-		string newLanguage = language.GetItemText(index);
-		Manager.Settings["language"] = newLanguage;
-		TranslationServer.SetLocale(newLanguage);
+		Manager.Settings["language"] = language_codes[index];
+		TranslationServer.SetLocale(language_codes[index]);
+		GetTree().ReloadCurrentScene();
 	}
 
 
