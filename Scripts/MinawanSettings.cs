@@ -37,6 +37,7 @@ public partial class MinawanSettings : Control
 	private void SetUpWindow()
 	{
 		GetWindow().Title = TranslationServer.Translate("MINAWAN_SETTINGS");
+		Manager.ApplyDefaultWindowSettings();
 	}
 
 

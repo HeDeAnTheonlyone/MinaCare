@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://c7qxwiobr4kwe"]
 
-[ext_resource type="Texture2D" uid="uid://q3h2y40tha3" path="res://Assets/MinaFallback/Stand.png" id="1_41fvl"]
-[ext_resource type="Texture2D" uid="uid://oe7jirkxvdi6" path="res://Assets/MinaFallback/Walk.png" id="2_pp5g6"]
+[ext_resource type="Texture2D" uid="uid://q3h2y40tha3" path="res://Assets/Sprites/MinaFallback/Stand.png" id="1_41fvl"]
+[ext_resource type="Texture2D" uid="uid://oe7jirkxvdi6" path="res://Assets/Sprites/MinaFallback/Walk.png" id="2_pp5g6"]
 
 [resource]
 animations = [{

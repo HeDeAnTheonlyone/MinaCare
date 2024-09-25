@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/Minawan.cs" id="2_gddjk"]
 [ext_resource type="AudioStream" uid="uid://41d2p08vx48v" path="res://Audio/wanwan.ogg" id="3_lmcl5"]
 [ext_resource type="Script" path="res://Scripts/MinawanActionMenu.cs" id="4_37jw1"]
-[ext_resource type="Texture2D" uid="uid://cjg5kipv0vc2u" path="res://Assets/Gear.png" id="5_5arv5"]
-[ext_resource type="Texture2D" uid="uid://bs7iroub7f7e7" path="res://Assets/Reroll.png" id="5_sagnh"]
-[ext_resource type="Texture2D" uid="uid://dsmm5xpfbb7y5" path="res://Assets/GearMinawan.png" id="6_j7g78"]
+[ext_resource type="Texture2D" uid="uid://cjg5kipv0vc2u" path="res://Assets/Sprites/Icons/Gear.png" id="5_5arv5"]
+[ext_resource type="Texture2D" uid="uid://bs7iroub7f7e7" path="res://Assets/Sprites/Icons/Reroll.png" id="5_sagnh"]
+[ext_resource type="Texture2D" uid="uid://dsmm5xpfbb7y5" path="res://Assets/Sprites/Icons/GearMinawan.png" id="6_j7g78"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgrft"]
 size = Vector2(400, 350)

@@ -1,0 +1,629 @@
+[gd_scene load_steps=58 format=3 uid="uid://0uih2hsiwldg"]
+
+[ext_resource type="Script" path="res://Scripts/ChurchOfOrber.cs" id="1_j3s27"]
+[ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_lux0n"]
+[ext_resource type="Texture2D" uid="uid://bupu7rgvdbxn1" path="res://Assets/Sprites/Orber.png" id="2_3m0gy"]
+[ext_resource type="Script" path="res://Scripts/Orber.cs" id="3_3073u"]
+[ext_resource type="PackedScene" uid="uid://bbyl74pb2qlsv" path="res://Assets/Models/ChurchRoom.glb" id="3_nwtr8"]
+[ext_resource type="Texture2D" uid="uid://lpts5mufwy73" path="res://Assets/Sprites/Chandelier.png" id="4_ur7ph"]
+[ext_resource type="Texture2D" uid="uid://4yoa6dtmw0c7" path="res://Assets/Sprites/Textures/BlackMarbleTiles.png" id="5_46k57"]
+[ext_resource type="Texture2D" uid="uid://bn6wk7c6cy6mn" path="res://Assets/Sprites/Textures/Space.png" id="5_v6byt"]
+[ext_resource type="Texture2D" uid="uid://d3bp2s1abt7as" path="res://Assets/Sprites/CandleStand.png" id="7_2oou1"]
+[ext_resource type="Texture2D" uid="uid://bh4wyac74uumo" path="res://Assets/Sprites/WallCandle.png" id="10_2y4ec"]
+
+[sub_resource type="Environment" id="Environment_ucpru"]
+sky_rotation = Vector3(-0.111701, 0, 0)
+sdfgi_min_cell_size = 319.779
+sdfgi_cascade0_distance = 20465.9
+sdfgi_max_distance = 327454.0
+sdfgi_energy = 89.04
+glow_enabled = true
+glow_intensity = 2.53
+glow_bloom = 0.2
+fog_enabled = true
+fog_light_color = Color(0.427564, 0.461315, 0.514361, 1)
+fog_sun_scatter = 0.2
+fog_density = 0.0002
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tybe0"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(0, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pxsj"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(540, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi0i7"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1080, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqctf"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1620, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnvtw"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(2160, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bewn7"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(2700, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4a2h"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(3240, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ateio"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(3780, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdtoe"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(4320, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce72s"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(4860, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rv5g"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(5400, 0, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wsye"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(0, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibsyv"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(540, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pjpj"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1080, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5tdtp"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1620, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpti6"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(2160, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylu1d"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(2700, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqd7q"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(3240, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_demyh"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(3780, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50ep8"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(4320, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5885x"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(4860, 763, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p74q7"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(0, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyy6l"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(540, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvgis"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1080, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b8afu"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1620, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqm52"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(2160, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejxgj"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(2700, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dr22l"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(3240, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8pru"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(3780, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqxp1"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(4320, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fesd"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(4860, 1526, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5diul"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(0, 2289, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tro5w"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(540, 2289, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02qnc"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1080, 2289, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r113"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(1620, 2289, 540, 763)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcu06"]
+atlas = ExtResource("5_v6byt")
+region = Rect2(2160, 2289, 540, 763)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k3uc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tybe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pxsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi0i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqctf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnvtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bewn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4a2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ateio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdtoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce72s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rv5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wsye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibsyv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pjpj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5tdtp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpti6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylu1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqd7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_demyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50ep8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5885x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p74q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyy6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvgis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b8afu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqm52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejxgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dr22l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8pru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqxp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fesd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5diul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tro5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02qnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r113")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcu06")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mpcg"]
+albedo_texture = ExtResource("5_46k57")
+uv1_scale = Vector3(4, 1, 0)
+uv1_triplanar_sharpness = 4.75683
+
+[sub_resource type="BoxMesh" id="BoxMesh_0pu3s"]
+size = Vector3(60, 15, 20)
+
+[sub_resource type="Gradient" id="Gradient_iqf4r"]
+offsets = PackedFloat32Array(0.214035, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_a8iew"]
+gradient = SubResource("Gradient_iqf4r")
+
+[sub_resource type="Curve" id="Curve_ulk2v"]
+_data = [Vector2(0, 0.726752), 0.0, 2.49204, 0, 0, Vector2(0.795527, 0.99172), -3.40163, -3.40163, 0, 0, Vector2(1, 0), -5.26651, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_8m16o"]
+curve = SubResource("Curve_ulk2v")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k4gsn"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -134.5
+angle_max = 530.0
+direction = Vector3(0, 1, 0)
+spread = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 10, 0)
+scale_curve = SubResource("CurveTexture_8m16o")
+color_ramp = SubResource("GradientTexture1D_a8iew")
+turbulence_enabled = true
+turbulence_noise_speed = Vector3(3, 3, 3)
+turbulence_influence_min = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fx4yf"]
+diffuse_mode = 3
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(0.835718, 3.22476e-06, 7.70092e-07, 1)
+emission_energy_multiplier = 6.0
+rim = 0.0
+rim_tint = 0.34
+detail_blend_mode = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_q8n6m"]
+material = SubResource("StandardMaterial3D_fx4yf")
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="ChurchOfOrber" type="Node3D"]
+script = ExtResource("1_j3s27")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 15)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ucpru")
+
+[node name="FloorLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, -80)
+light_energy = 7.0
+light_specular = 0.02
+spot_range = 129.119
+spot_angle = 83.2946
+
+[node name="Minawan" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40568, 0)
+pixel_size = 0.005
+sprite_frames = ExtResource("1_lux0n")
+
+[node name="Orber" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -160)
+pixel_size = 0.06
+texture = ExtResource("2_3m0gy")
+script = ExtResource("3_3073u")
+
+[node name="SpaceBg" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.5367, -281.657)
+pixel_size = 0.4385
+sprite_frames = SubResource("SpriteFrames_k3uc5")
+autoplay = "default"
+frame_progress = 0.0703639
+
+[node name="ChurchRoom" parent="." instance=ExtResource("3_nwtr8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)
+
+[node name="Altar" type="MeshInstance3D" parent="ChurchRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, -60)
+material_override = SubResource("StandardMaterial3D_1mpcg")
+lod_bias = 0.001
+mesh = SubResource("BoxMesh_0pu3s")
+skeleton = NodePath("../..")
+
+[node name="Candles" type="Node3D" parent="."]
+
+[node name="ChandelierL" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70, 80, -120)
+pixel_size = 0.08
+texture = ExtResource("4_ur7ph")
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/ChandelierL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1106, 1.84044, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierL/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleFire2" type="GPUParticles3D" parent="Candles/ChandelierL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2095, 1.84044, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierL/CandleFire2"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleFire3" type="GPUParticles3D" parent="Candles/ChandelierL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47209, 11.8168, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierL/CandleFire3"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleFire4" type="GPUParticles3D" parent="Candles/ChandelierL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31007, 11.8168, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierL/CandleFire4"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="ChandelierR" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70, 80, -120)
+pixel_size = 0.08
+texture = ExtResource("4_ur7ph")
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/ChandelierR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1106, 1.84044, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+trail_lifetime = 2.65
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierR/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleFire2" type="GPUParticles3D" parent="Candles/ChandelierR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2095, 1.84044, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierR/CandleFire2"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleFire3" type="GPUParticles3D" parent="Candles/ChandelierR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47209, 11.8168, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierR/CandleFire3"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleFire4" type="GPUParticles3D" parent="Candles/ChandelierR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31007, 11.8168, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/ChandelierR/CandleFire4"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleL" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 20.5, -140)
+pixel_size = 0.05
+texture = ExtResource("7_2oou1")
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/CandleL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35787, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/CandleL/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="CandleR" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 20.5, -140)
+pixel_size = 0.05
+texture = ExtResource("7_2oou1")
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/CandleR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.35787, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/CandleR/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="WallCandleL1" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93, 30, -80)
+pixel_size = 0.07
+texture = ExtResource("10_2y4ec")
+region_rect = Rect2(316.651, 222.772, 157.261, 172.656)
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/WallCandleL1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99766, 5.83108, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/WallCandleL1/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="WallCandleL2" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93, 30, -115)
+pixel_size = 0.07
+texture = ExtResource("10_2y4ec")
+region_rect = Rect2(316.651, 222.772, 157.261, 172.656)
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/WallCandleL2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99766, 5.83108, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/WallCandleL2/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="WallCandleR1" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 30, -80)
+flip_h = true
+pixel_size = 0.07
+texture = ExtResource("10_2y4ec")
+region_rect = Rect2(316.651, 222.772, 157.261, 172.656)
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/WallCandleR1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.998, 5.831, 0)
+cast_shadow = 0
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/WallCandleR1/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[node name="WallCandleR2" type="Sprite3D" parent="Candles"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93, 30, -115)
+flip_h = true
+pixel_size = 0.07
+texture = ExtResource("10_2y4ec")
+region_rect = Rect2(316.651, 222.772, 157.261, 172.656)
+
+[node name="CandleFire" type="GPUParticles3D" parent="Candles/WallCandleR2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.998, 5.831, 0)
+amount = 200
+randomness = 1.0
+transform_align = 3
+process_material = SubResource("ParticleProcessMaterial_k4gsn")
+draw_pass_1 = SubResource("BoxMesh_q8n6m")
+
+[node name="CandleLight" type="OmniLight3D" parent="Candles/WallCandleR2/CandleFire"]
+light_color = Color(1, 0.584314, 0, 1)
+light_energy = 10.0
+light_size = 1.0
+omni_range = 100.0
+
+[editable path="ChurchRoom"]

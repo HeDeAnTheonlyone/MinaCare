@@ -106,6 +106,7 @@ public partial class Manager : Node
         window.Size = screenSize / 2;
         window.Position = screenOrigin + screenSize / 4;
         window.Borderless = false;
+        window.Unresizable = false;
         window.TransparentBg = false;
         window.Transparent =
         window.Unfocusable = false;

@@ -25,9 +25,9 @@ Manager="*res://Scripts/Manager.cs"
 
 [display]
 
+window/size/mode=3
 window/size/resizable=false
 window/size/borderless=true
-window/size/transparent=true
 window/energy_saving/keep_screen_on=false
 window/subwindows/embed_subwindows=false
 window/per_pixel_transparency/allowed=true
@@ -56,7 +56,5 @@ locale/translations=PackedStringArray("res://Translation/Translation.en.translat
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 0)
 viewport/transparent_background=true

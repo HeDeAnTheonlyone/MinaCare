@@ -22,6 +22,7 @@ public partial class Settings : Control
 	private void SetUpWindow()
 	{
 		GetWindow().Title = TranslationServer.Translate("GENERAL_SETTINGS");
+		Manager.ApplyDefaultWindowSettings();
 	}
 
 

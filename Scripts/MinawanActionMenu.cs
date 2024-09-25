@@ -20,7 +20,6 @@ public partial class MinawanActionMenu : Window
 	private void OnMinawanSettingsPressed()
 	{
 		AlwaysOnTop = false;
-		Manager.ApplyDefaultWindowSettings();
 		Manager.SwitchScene("MinawanSettings");
 	}
 
@@ -28,7 +27,6 @@ public partial class MinawanActionMenu : Window
 	private void OnSettingsPressed()
 	{
 		AlwaysOnTop = false;
-		Manager.ApplyDefaultWindowSettings();
 		Manager.SwitchScene("Settings");
 	}
 

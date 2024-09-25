@@ -18,6 +18,7 @@ public partial class Walkies : Node2D
 		window.Size = windowSize;
 		window.AlwaysOnTop = true;
 		window.Borderless = true;
+		window.Unresizable = true;
 		window.TransparentBg = true;
 		window.Transparent =
 		window.Unfocusable = true;
