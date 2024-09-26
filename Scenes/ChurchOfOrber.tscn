@@ -1,7 +1,6 @@
-[gd_scene load_steps=58 format=3 uid="uid://0uih2hsiwldg"]
+[gd_scene load_steps=72 format=3 uid="uid://0uih2hsiwldg"]
 
 [ext_resource type="Script" path="res://Scripts/ChurchOfOrber.cs" id="1_j3s27"]
-[ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_lux0n"]
 [ext_resource type="Texture2D" uid="uid://bupu7rgvdbxn1" path="res://Assets/Sprites/Orber.png" id="2_3m0gy"]
 [ext_resource type="Script" path="res://Scripts/Orber.cs" id="3_3073u"]
 [ext_resource type="PackedScene" uid="uid://bbyl74pb2qlsv" path="res://Assets/Models/ChurchRoom.glb" id="3_nwtr8"]
@@ -9,7 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://4yoa6dtmw0c7" path="res://Assets/Sprites/Textures/BlackMarbleTiles.png" id="5_46k57"]
 [ext_resource type="Texture2D" uid="uid://bn6wk7c6cy6mn" path="res://Assets/Sprites/Textures/Space.png" id="5_v6byt"]
 [ext_resource type="Texture2D" uid="uid://d3bp2s1abt7as" path="res://Assets/Sprites/CandleStand.png" id="7_2oou1"]
+[ext_resource type="PackedScene" uid="uid://eie06v5hesal" path="res://Assets/Models/ChurchBench.glb" id="8_hehtl"]
+[ext_resource type="Texture2D" uid="uid://cy5lcnfyx6118" path="res://Assets/Sprites/Textures/Wood.png" id="9_2r2vq"]
 [ext_resource type="Texture2D" uid="uid://bh4wyac74uumo" path="res://Assets/Sprites/WallCandle.png" id="10_2y4ec"]
+[ext_resource type="Texture2D" uid="uid://q3h2y40tha3" path="res://Assets/Sprites/MinaFallback/Stand.png" id="12_tfepe"]
+[ext_resource type="Script" path="res://Scripts/ChurchMinawan.cs" id="13_3j40u"]
+[ext_resource type="Texture2D" uid="uid://oe7jirkxvdi6" path="res://Assets/Sprites/MinaFallback/Walk.png" id="13_a60bc"]
+[ext_resource type="Texture2D" uid="uid://dnniv50suhl23" path="res://Assets/Sprites/prayge.png" id="13_fywnh"]
 
 [sub_resource type="Environment" id="Environment_ucpru"]
 sky_rotation = Vector3(-0.111701, 0, 0)
@@ -293,6 +298,11 @@ uv1_triplanar_sharpness = 4.75683
 [sub_resource type="BoxMesh" id="BoxMesh_0pu3s"]
 size = Vector3(60, 15, 20)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuf76"]
+albedo_texture = ExtResource("9_2r2vq")
+uv1_scale = Vector3(10, 12, 10)
+uv1_triplanar_sharpness = 0.196146
+
 [sub_resource type="Gradient" id="Gradient_iqf4r"]
 offsets = PackedFloat32Array(0.214035, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
@@ -330,32 +340,116 @@ emission = Color(0.835718, 3.22476e-06, 7.70092e-07, 1)
 emission_energy_multiplier = 6.0
 rim = 0.0
 rim_tint = 0.34
+refraction_enabled = true
 detail_blend_mode = 1
 
 [sub_resource type="BoxMesh" id="BoxMesh_q8n6m"]
 material = SubResource("StandardMaterial3D_fx4yf")
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="Curve3D" id="Curve3D_papxh"]
+bake_interval = 5.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 3.515, 4.73, 0, 7.38, 0.01, 0, 0, -12.8212, 0, -84.1933, 7.505, 0, -0.325, -9.925, 0, 0, -26.8546, 0, -97.9181, 0, 0, 0, 0, 10.625, 0, -40, 0, -91.0695, 0, 0, 0, 0, 0, 0, -40, 6, -83.3741, 0, 0, 0, 0, 0, 0, -40, 6, -82.6463),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h1rrf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tfepe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a60bc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve3D" id="Curve3D_ayt8i"]
+bake_interval = 5.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.85, 1.65, 0, -16.045, 1.51894, 0, -42.6938, -2.865, 0, -0.4, 5.09, 0, -1.485, 22.7307, 0, -60.1278, 1.185, 0, -1.66, 0, 5.78, -0.29, 38.1754, 0, -51.8401, 0, 6.19, -6.34, 0, 0, 0, 38.175, 6.584, -43.5207, 0, 0, 0, 0, 0, 0, 38.175, 6.584, -42.8967),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yhdnb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tfepe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a60bc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve3D" id="Curve3D_j4ps8"]
+bake_interval = 5.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.85, 1.65, 0, -16.045, 7.43613, 0, -77.6182, -2.865, 0, -0.4, 5.09, 0, -1.485, 24.8132, 0, -99.2224, 1.185, 0, -1.66, 0, 5.78, -0.29, 38.1754, 0, -92.0337, 0, 6.19, -6.34, 0, 0, 0, 38.175, 6.584, -83.117, 0, 0, 0, 0, 0, 0, 38.175, 6.584, -82.663),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_po3fo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tfepe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a60bc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="Curve3D" id="Curve3D_rr8gy"]
+bake_interval = 5.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 3.515, 4.73, 0, 7.38, 0.01, 0, 0, -17.1119, 0, -53.2207, 7.505, 0, -0.325, -9.925, 0, 0, -26.8546, 0, -58.1144, 0, 0, 0, 0, 10.625, 0, -40, 0, -48.7039, 0, 0, 0, 0, 0, 0, -40, 6, -43.3248, 0, 0, 0, 0, 0, 0, -40, 6, -42.6223),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1v4bn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_tfepe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a60bc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="ChurchOfOrber" type="Node3D"]
 script = ExtResource("1_j3s27")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 15)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 35, 15)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ucpru")
 
 [node name="FloorLight" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 40, -80)
-light_energy = 7.0
+transform = Transform3D(1, 0, 0, 0, 0.38922, 0.921145, 0, -0.921145, 0.38922, 0, 50.6279, -9.065)
+light_energy = 2.0
 light_specular = 0.02
-spot_range = 129.119
-spot_angle = 83.2946
-
-[node name="Minawan" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40568, 0)
-pixel_size = 0.005
-sprite_frames = ExtResource("1_lux0n")
+spot_range = 206.794
+spot_angle = 78.405
 
 [node name="Orber" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, -160)
@@ -379,6 +473,38 @@ material_override = SubResource("StandardMaterial3D_1mpcg")
 lod_bias = 0.001
 mesh = SubResource("BoxMesh_0pu3s")
 skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ChurchRoom"]
+
+[node name="Benches" type="Node3D" parent="ChurchRoom"]
+
+[node name="ChurchBench1" parent="ChurchRoom/Benches" instance=ExtResource("8_hehtl")]
+transform = Transform3D(25, 0, 0, 0, 6, 0, 0, 0, 6, -50, 6, 0)
+
+[node name="Cube" parent="ChurchRoom/Benches/ChurchBench1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wuf76")
+
+[node name="ChurchBench2" parent="ChurchRoom/Benches" instance=ExtResource("8_hehtl")]
+transform = Transform3D(25, 0, 0, 0, 6, 0, 0, 0, 6, 50, 6, 0)
+
+[node name="Cube" parent="ChurchRoom/Benches/ChurchBench2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wuf76")
+
+[node name="ChurchBench3" parent="ChurchRoom/Benches" instance=ExtResource("8_hehtl")]
+transform = Transform3D(25, 0, 0, 0, 6, 0, 0, 0, 6, -50, 6, 40)
+
+[node name="Cube" parent="ChurchRoom/Benches/ChurchBench3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wuf76")
+
+[node name="ChurchBench4" parent="ChurchRoom/Benches" instance=ExtResource("8_hehtl")]
+transform = Transform3D(25, 0, 0, 0, 6, 0, 0, 0, 6, 50, 6, 40)
+
+[node name="Cube" parent="ChurchRoom/Benches/ChurchBench4" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wuf76")
 
 [node name="Candles" type="Node3D" parent="."]
 
@@ -503,6 +629,7 @@ draw_pass_1 = SubResource("BoxMesh_q8n6m")
 light_color = Color(1, 0.584314, 0, 1)
 light_energy = 10.0
 light_size = 1.0
+shadow_enabled = true
 omni_range = 100.0
 
 [node name="CandleL" type="Sprite3D" parent="Candles"]
@@ -561,6 +688,8 @@ draw_pass_1 = SubResource("BoxMesh_q8n6m")
 light_color = Color(1, 0.584314, 0, 1)
 light_energy = 10.0
 light_size = 1.0
+shadow_enabled = true
+shadow_bias = 0.0
 omni_range = 100.0
 
 [node name="WallCandleL2" type="Sprite3D" parent="Candles"]
@@ -626,4 +755,96 @@ light_energy = 10.0
 light_size = 1.0
 omni_range = 100.0
 
+[node name="WalkPaths" type="Node3D" parent="."]
+
+[node name="Path3D1" type="Path3D" parent="WalkPaths"]
+curve = SubResource("Curve3D_papxh")
+
+[node name="MinaFollow" type="PathFollow3D" parent="WalkPaths/Path3D1"]
+transform = Transform3D(0.989455, 0, 0.14464, 0, 1.00007, 0, -0.144639, 0, 0.989461, 0, 0, 3.515)
+rotation_mode = 1
+loop = false
+
+[node name="Minawan" type="AnimatedSprite3D" parent="WalkPaths/Path3D1/MinaFollow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
+flip_h = true
+pixel_size = 0.04
+sprite_frames = SubResource("SpriteFrames_h1rrf")
+script = ExtResource("13_3j40u")
+
+[node name="Pray" type="Sprite3D" parent="WalkPaths/Path3D1/MinaFollow/Minawan"]
+transform = Transform3D(1, 0, 8.52651e-14, 0, 1, 0, 0, 0, 1, -2.598, -3.5, -1)
+visible = false
+sorting_offset = 2.0
+pixel_size = 0.015
+texture = ExtResource("13_fywnh")
+
+[node name="Path3D2" type="Path3D" parent="WalkPaths"]
+curve = SubResource("Curve3D_ayt8i")
+
+[node name="MinaFollow" type="PathFollow3D" parent="WalkPaths/Path3D2"]
+transform = Transform3D(0.99932, 0, -0.0355535, 0, 1.00007, 0, 0.0355532, 0, 0.999328, 0, 0, 0)
+rotation_mode = 1
+loop = false
+
+[node name="Minawan" type="AnimatedSprite3D" parent="WalkPaths/Path3D2/MinaFollow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
+pixel_size = 0.04
+sprite_frames = SubResource("SpriteFrames_yhdnb")
+script = ExtResource("13_3j40u")
+
+[node name="Pray" type="Sprite3D" parent="WalkPaths/Path3D2/MinaFollow/Minawan"]
+transform = Transform3D(1, 0, 8.52651e-14, 0, 1, 0, 0, 0, 1, 2.5, -3.5, -1)
+visible = false
+sorting_offset = 2.0
+pixel_size = 0.015
+texture = ExtResource("13_fywnh")
+
+[node name="Path3D3" type="Path3D" parent="WalkPaths"]
+curve = SubResource("Curve3D_j4ps8")
+
+[node name="MinaFollow" type="PathFollow3D" parent="WalkPaths/Path3D3"]
+transform = Transform3D(0.995397, 0, -0.0953643, 0, 1.00007, 0, 0.095363, 0, 0.99541, 0, 0, 0)
+rotation_mode = 1
+loop = false
+
+[node name="Minawan" type="AnimatedSprite3D" parent="WalkPaths/Path3D3/MinaFollow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
+pixel_size = 0.04
+sprite_frames = SubResource("SpriteFrames_po3fo")
+script = ExtResource("13_3j40u")
+
+[node name="Pray" type="Sprite3D" parent="WalkPaths/Path3D3/MinaFollow/Minawan"]
+transform = Transform3D(1, 0, 8.52651e-14, 0, 1, 0, 0, 0, 1, 2.5, -3.5, -1)
+visible = false
+sorting_offset = 2.0
+pixel_size = 0.015
+texture = ExtResource("13_fywnh")
+
+[node name="Path3D4" type="Path3D" parent="WalkPaths"]
+curve = SubResource("Curve3D_rr8gy")
+
+[node name="MinaFollow" type="PathFollow3D" parent="WalkPaths/Path3D4"]
+transform = Transform3D(0.957376, 0, 0.288754, 0, 1.00007, 0, -0.288752, 0, 0.957382, 0, 0, 3.515)
+rotation_mode = 1
+loop = false
+
+[node name="Minawan" type="AnimatedSprite3D" parent="WalkPaths/Path3D4/MinaFollow"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.5, 0)
+flip_h = true
+pixel_size = 0.04
+sprite_frames = SubResource("SpriteFrames_1v4bn")
+script = ExtResource("13_3j40u")
+
+[node name="Pray" type="Sprite3D" parent="WalkPaths/Path3D4/MinaFollow/Minawan"]
+transform = Transform3D(1, 0, 8.52651e-14, 0, 1, 0, 0, 0, 1, -2.598, -3.5, -1)
+visible = false
+sorting_offset = 2.0
+pixel_size = 0.015
+texture = ExtResource("13_fywnh")
+
 [editable path="ChurchRoom"]
+[editable path="ChurchRoom/Benches/ChurchBench1"]
+[editable path="ChurchRoom/Benches/ChurchBench2"]
+[editable path="ChurchRoom/Benches/ChurchBench3"]
+[editable path="ChurchRoom/Benches/ChurchBench4"]
