@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://bvgd7bwbsy3w8"
-path="res://.godot/imported/yippee.ogg-13f8d306a31c8d5b0a66ac4a4c6dd634.oggvorbisstr"
+path="res://.godot/imported/Yippee.ogg-524d40cb05a97db90c6d403c233e03c0.oggvorbisstr"
 
 [deps]
 
-source_file="res://Audio/yippee.ogg"
-dest_files=["res://.godot/imported/yippee.ogg-13f8d306a31c8d5b0a66ac4a4c6dd634.oggvorbisstr"]
+source_file="res://Audio/Yippee.ogg"
+dest_files=["res://.godot/imported/Yippee.ogg-524d40cb05a97db90c6d403c233e03c0.oggvorbisstr"]
 
 [params]
 
