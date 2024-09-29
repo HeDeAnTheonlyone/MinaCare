@@ -4,7 +4,7 @@ public partial class Settings : Control
 {
 	private CheckButton splashScreen;
 	private OptionButton language;
-	private string[] language_codes;
+	private string[] languageCodes;
 
 
 
@@ -12,7 +12,7 @@ public partial class Settings : Control
 	{
 		splashScreen = GetNode<CheckButton>("MarginContainer/ScrollContainer/OptionsList/SplashScreen/Input");
 		language = GetNode<OptionButton>("MarginContainer/ScrollContainer/OptionsList/Language/Input");
-		language_codes = TranslationServer.GetLoadedLocales();
+		languageCodes = TranslationServer.GetLoadedLocales();
 
 		SetUpWindow();
 		FetchSettings();
@@ -34,7 +34,7 @@ public partial class Settings : Control
 		for (int i = 0; i < allLanguages.Length; i++)
 		{
 			language.AddItem(TranslationServer.GetLanguageName(allLanguages[i]));
-			if ((string)Manager.Settings["language"] == language_codes[i]) language.Selected = i;
+			if ((string)Manager.Settings["language"] == languageCodes[i]) language.Selected = i;
 		}
 	}
 
@@ -47,8 +47,8 @@ public partial class Settings : Control
 
 	private void OnLanguageSelected(int index)
 	{
-		Manager.Settings["language"] = language_codes[index];
-		TranslationServer.SetLocale(language_codes[index]);
+		Manager.Settings["language"] = languageCodes[index];
+		TranslationServer.SetLocale(languageCodes[index]);
 		GetTree().ReloadCurrentScene();
 	}
 
