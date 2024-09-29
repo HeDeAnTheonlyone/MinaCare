@@ -13,7 +13,8 @@ public partial class WalkiesMinawan : AnimatedSprite2D
 [Export] public float MaxSpeed { get; set; } = 250f;
 [Export] public float Acceleration { get; set; } = 5f;
 [Export] public float DecelerationDistance { get; set; } = 250f;
-private Vector2[] passthroughPolygon;
+private Vector2[] interactablePolygon;
+private AnimatedSprite2D patPat;
 private AudioStreamPlayer wanWanSFX;
 private Line2D breadcrumbs;
 private Line2D summonShape;
@@ -22,6 +23,7 @@ private MinawanActionMenu actionMenu;
 private Window window;
 private float speed = 0;
 private Vector2 prevPos;
+private SelectedAction action = SelectedAction.Wan;
 
 
 
@@ -31,7 +33,10 @@ private Vector2 prevPos;
 		// breadcrumbs = GetNode<Line2D>("../Breadcrumbs");a
 		// summonShape = GetNode<Line2D>("../SummonShape");
 		actionMenu = GetNode<MinawanActionMenu>("ActionMenu");
+		patPat = GetNode<AnimatedSprite2D>("PatPat");
 		actionMenu.RequestChangeMinawan += UseRandomMinawanTexture;
+		actionMenu.SelectWanAction += () => action = SelectedAction.Wan;
+		actionMenu.SelectPatAction += () => action = SelectedAction.Pat;
 		window = GetWindow();
 
 		LoadMinawanData();
@@ -45,12 +50,21 @@ private Vector2 prevPos;
     public override void _ExitTree()
     {
         actionMenu.RequestChangeMinawan -= UseRandomMinawanTexture;
-    }
+		actionMenu.SelectWanAction -= () => action = SelectedAction.Wan;
+		actionMenu.SelectPatAction -= () => action = SelectedAction.Pat;
+	}
 
 
     public override void _Process(double delta)
 	{
 		MoveMinawan((float)delta);
+	}
+
+
+	public enum SelectedAction
+	{
+		Wan,
+		Pat,
 	}
 
 
@@ -82,12 +96,12 @@ private Vector2 prevPos;
 
 		Position = Position.MoveToward(mousePos, speed * (float)delta);
 
-		FlipH = mousePos.X - Position.X > 0 ? false : true;
+		Scale = mousePos.X - Position.X > 0 ? new Vector2(MinaScale, MinaScale) : Scale = new Vector2(-MinaScale, MinaScale); ;
 
 		if (Position - prevPos == Vector2.Zero) Stop();
 		else
 		{
-			UpdateInteractionPolygon();
+			UpdateInteractablePolygon();
 			Play();
 		}
 
@@ -134,11 +148,11 @@ private void SaveMinawanData()
 }
 
 
-	private void UpdateInteractionPolygon()
+	private void UpdateInteractablePolygon()
 	{
-		Vector2[] newPoints = new Vector2[passthroughPolygon.Length];
+		Vector2[] newPoints = new Vector2[interactablePolygon.Length];
 
-		for (int i = 0; i < newPoints.Length; i++) newPoints[i] = Position + passthroughPolygon[i];
+		for (int i = 0; i < newPoints.Length; i++) newPoints[i] = Position + interactablePolygon[i];
 		
 		window.MousePassthroughPolygon = newPoints;
 	}
@@ -148,7 +162,7 @@ private void SaveMinawanData()
 	{
 		Vector2 spriteHalfSideLength = SpriteFrames.GetFrameTexture("default", 0).GetSize() * MinaScale / 2;
 
-		passthroughPolygon = new Vector2[] {
+		interactablePolygon = new Vector2[] {
 			spriteHalfSideLength * -1,
 			new Vector2(spriteHalfSideLength.X, -spriteHalfSideLength.Y),
 			spriteHalfSideLength,
@@ -157,9 +171,32 @@ private void SaveMinawanData()
 	}
 
 
-	private void OnClickMinawan(Node viewport, InputEvent @event, int shape_idx)
+	public override void _Input(InputEvent @event)
 	{
 		if (@event.IsActionPressed("AltLeftClick")) actionMenu.Popup();
-		else if (@event.IsActionPressed("LeftClick")) wanWanSFX.Play();
+		else if (@event.IsActionPressed("LeftClick"))
+		{
+			switch (action)
+			{
+				case SelectedAction.Wan:
+					wanWanSFX.Play();
+					break;
+
+				case SelectedAction.Pat:
+					patPat.Visible = true;
+					patPat.Play();
+					break;
+			}
+		}
+		else if (@event.IsActionReleased("LeftClick"))
+		{
+			switch (action)
+			{
+				case SelectedAction.Pat:
+					patPat.Visible = false;
+					patPat.Stop();
+					break;
+			}
+		}
 	}
 }

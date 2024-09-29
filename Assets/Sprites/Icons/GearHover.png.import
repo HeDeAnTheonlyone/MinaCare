@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqg2yoqvg7dm1"
-path="res://.godot/imported/Notes.png-a4acb97ffb634d434dbe1f8964d99074.ctex"
+uid="uid://2pvdfdlbyjp3"
+path="res://.godot/imported/GearHover.png-8e631bc1bcd89979f758737cae2460b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Notes.png"
-dest_files=["res://.godot/imported/Notes.png-a4acb97ffb634d434dbe1f8964d99074.ctex"]
+source_file="res://Assets/Sprites/Icons/GearHover.png"
+dest_files=["res://.godot/imported/GearHover.png-8e631bc1bcd89979f758737cae2460b8.ctex"]
 
 [params]
 

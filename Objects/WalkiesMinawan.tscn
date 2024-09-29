@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bj71puvunqr5m"]
+[gd_scene load_steps=24 format=3 uid="uid://bj71puvunqr5m"]
 
 [ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_4k01c"]
 [ext_resource type="Script" path="res://Scripts/Objects/WalkiesMinawan.cs" id="2_mkkxb"]
@@ -6,11 +6,62 @@
 [ext_resource type="Script" path="res://Scripts/Objects/MinawanActionMenu.cs" id="4_37jw1"]
 [ext_resource type="Texture2D" uid="uid://cjg5kipv0vc2u" path="res://Assets/Sprites/Icons/Gear.png" id="5_5arv5"]
 [ext_resource type="Texture2D" uid="uid://bs7iroub7f7e7" path="res://Assets/Sprites/Icons/Reroll.png" id="5_sagnh"]
+[ext_resource type="Texture2D" uid="uid://cy5pmo34nbd2u" path="res://Assets/Sprites/Icons/GearMinawanHover.png" id="6_bugie"]
 [ext_resource type="Texture2D" uid="uid://dsmm5xpfbb7y5" path="res://Assets/Sprites/Icons/GearMinawan.png" id="6_j7g78"]
-[ext_resource type="Texture2D" uid="uid://cqg2yoqvg7dm1" path="res://Assets/Sprites/Notes.png" id="8_c7wc2"]
+[ext_resource type="Texture2D" uid="uid://2pvdfdlbyjp3" path="res://Assets/Sprites/Icons/GearHover.png" id="8_6shgh"]
+[ext_resource type="Texture2D" uid="uid://cqg2yoqvg7dm1" path="res://Assets/Sprites/Icons/Notes.png" id="8_c7wc2"]
+[ext_resource type="Texture2D" uid="uid://dhgu4hx3anbjx" path="res://Assets/Sprites/Icons/RerollHover.png" id="9_kxoro"]
+[ext_resource type="Texture2D" uid="uid://dpeufb37sqg6s" path="res://Assets/Sprites/Icons/WanWan.png" id="9_lugw2"]
+[ext_resource type="Texture2D" uid="uid://dt4r866lelfvx" path="res://Assets/Sprites/Icons/WanWanHover.png" id="10_3ty2u"]
+[ext_resource type="Texture2D" uid="uid://ca7ak8ib2ocu2" path="res://Assets/Sprites/Icons/HeadPat.png" id="11_gv12a"]
+[ext_resource type="Texture2D" uid="uid://85j3sat226sd" path="res://Assets/Sprites/Icons/HeadPatHover.png" id="12_iu1aj"]
+[ext_resource type="Texture2D" uid="uid://bh86i5hjr23y" path="res://Assets/Sprites/HeadPatsAnim.png" id="12_xtu4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgrft"]
 size = Vector2(400, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nosby"]
+atlas = ExtResource("12_xtu4o")
+region = Rect2(0, 0, 109, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc0b2"]
+atlas = ExtResource("12_xtu4o")
+region = Rect2(109, 0, 109, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fan5t"]
+atlas = ExtResource("12_xtu4o")
+region = Rect2(218, 0, 109, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1rph"]
+atlas = ExtResource("12_xtu4o")
+region = Rect2(327, 0, 109, 107)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egsy1"]
+atlas = ExtResource("12_xtu4o")
+region = Rect2(436, 0, 109, 107)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a0lak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nosby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc0b2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fan5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1rph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egsy1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="Minawan" type="AnimatedSprite2D"]
 sprite_frames = ExtResource("1_4k01c")
@@ -27,7 +78,6 @@ volume_db = -10.0
 
 [node name="ActionMenu" type="Window" parent="."]
 transparent_bg = true
-position = Vector2i(0, 36)
 size = Vector2i(392, 322)
 visible = false
 wrap_controls = true
@@ -51,11 +101,15 @@ size_flags_horizontal = 0
 [node name="MinawanSettings" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow1"]
 layout_mode = 2
 texture_normal = ExtResource("6_j7g78")
+texture_pressed = ExtResource("6_j7g78")
+texture_hover = ExtResource("6_bugie")
 stretch_mode = 4
 
 [node name="Settings" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow1"]
 layout_mode = 2
 texture_normal = ExtResource("5_5arv5")
+texture_pressed = ExtResource("5_5arv5")
+texture_hover = ExtResource("8_6shgh")
 stretch_mode = 4
 
 [node name="TEMP" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow1"]
@@ -76,7 +130,29 @@ size_flags_horizontal = 0
 [node name="ChangeMinawan" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow2"]
 layout_mode = 2
 texture_normal = ExtResource("5_sagnh")
+texture_pressed = ExtResource("5_sagnh")
+texture_hover = ExtResource("9_kxoro")
 stretch_mode = 4
+
+[node name="WanWan" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow2"]
+layout_mode = 2
+texture_normal = ExtResource("9_lugw2")
+texture_pressed = ExtResource("9_lugw2")
+texture_hover = ExtResource("10_3ty2u")
+stretch_mode = 4
+
+[node name="PatPat" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow2"]
+layout_mode = 2
+texture_normal = ExtResource("11_gv12a")
+texture_pressed = ExtResource("11_gv12a")
+texture_hover = ExtResource("12_iu1aj")
+stretch_mode = 4
+
+[node name="PatPat" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(72, -130)
+scale = Vector2(2.30257, 2.30257)
+sprite_frames = SubResource("SpriteFrames_a0lak")
 
 [connection signal="input_event" from="Area" to="." method="OnClickMinawan"]
 [connection signal="about_to_popup" from="ActionMenu" to="ActionMenu" method="OnAboutToPopUp"]
@@ -85,3 +161,5 @@ stretch_mode = 4
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow1/Settings" to="ActionMenu" method="OnSettingsPressed"]
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow1/TEMP" to="ActionMenu" method="TEMP"]
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow2/ChangeMinawan" to="ActionMenu" method="OnChangeMinawanPressed"]
+[connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow2/WanWan" to="ActionMenu" method="OnWanActionPressed"]
+[connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow2/PatPat" to="ActionMenu" method="OnPatActionPressed"]

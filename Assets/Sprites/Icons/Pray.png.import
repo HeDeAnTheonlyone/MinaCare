@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnniv50suhl23"
-path.s3tc="res://.godot/imported/Pray.png-edf257b3c08b531c3bfa3b2b7e2fbd49.s3tc.ctex"
+path.s3tc="res://.godot/imported/Pray.png-49eb1967475781903a16cdfbf496362b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Sprites/Pray.png"
-dest_files=["res://.godot/imported/Pray.png-edf257b3c08b531c3bfa3b2b7e2fbd49.s3tc.ctex"]
+source_file="res://Assets/Sprites/Icons/Pray.png"
+dest_files=["res://.godot/imported/Pray.png-49eb1967475781903a16cdfbf496362b.s3tc.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b435sov4m22fu"
-path="res://.godot/imported/FwootPunch.png-9de4cbe771417b39a76c987db4c1569a.ctex"
+uid="uid://dhgu4hx3anbjx"
+path="res://.godot/imported/RerollHover.png-e3b6d861e817c19cdfc718fa408e7895.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/FwootPunch.png"
-dest_files=["res://.godot/imported/FwootPunch.png-9de4cbe771417b39a76c987db4c1569a.ctex"]
+source_file="res://Assets/Sprites/Icons/RerollHover.png"
+dest_files=["res://.godot/imported/RerollHover.png-e3b6d861e817c19cdfc718fa408e7895.ctex"]
 
 [params]
 

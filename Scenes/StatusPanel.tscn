@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cp0rjbkuu6los" path="res://Assets/Sprites/Icons/FoodIcon.png" id="1_674ou"]
 [ext_resource type="Script" path="res://Scripts/Objects/StatusPanel.cs" id="1_mgwan"]
 [ext_resource type="Texture2D" uid="uid://ctq0a4l7kr1cm" path="res://Assets/Sprites/StatusBarTexture/SnackBar.png" id="1_t7v0h"]
-[ext_resource type="Texture2D" uid="uid://dnniv50suhl23" path="res://Assets/Sprites/Pray.png" id="2_oub8o"]
+[ext_resource type="Texture2D" uid="uid://dnniv50suhl23" path="res://Assets/Sprites/Icons/Pray.png" id="2_oub8o"]
 [ext_resource type="Texture2D" uid="uid://gpiajrgq6uit" path="res://Assets/Sprites/StatusBarTexture/PrayerBar.png" id="3_6p26o"]
 [ext_resource type="Texture2D" uid="uid://cvv7od2e85jjg" path="res://Assets/Sprites/StatusBarTexture/FwootPuchBar.png" id="4_qd4y7"]
-[ext_resource type="Texture2D" uid="uid://b435sov4m22fu" path="res://Assets/Sprites/FwootPunch.png" id="5_bklgw"]
+[ext_resource type="Texture2D" uid="uid://b435sov4m22fu" path="res://Assets/Sprites/Icons/FwootPunch.png" id="5_bklgw"]
 
 [node name="StatusPanel" type="MarginContainer"]
 anchors_preset = 15

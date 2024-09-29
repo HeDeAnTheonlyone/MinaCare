@@ -40,4 +40,12 @@ public partial class MinawanActionMenu : Window
 
 	[Signal] public delegate void RequestChangeMinawanEventHandler();
 	private void OnChangeMinawanPressed() => EmitSignal(SignalName.RequestChangeMinawan);
+
+
+	[Signal] public delegate void SelectWanActionEventHandler();
+	private void OnWanActionPressed() => EmitSignal(SignalName.SelectWanAction);
+
+
+	[Signal] public delegate void SelectPatActionEventHandler();
+	private void OnPatActionPressed() => EmitSignal(SignalName.SelectPatAction);
 }
