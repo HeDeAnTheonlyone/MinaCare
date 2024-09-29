@@ -36,7 +36,7 @@ private Vector2 prevPos;
 
 		LoadMinawanData();
 		Scale = new Vector2(MinaScale, MinaScale);
-		GeneratePassthroughPolygon();
+		GenerateInteractionPolygon();
 		Position = GetGlobalMousePosition();
 		last3Breadcrumbs.AddRange(Enumerable.Repeat(Position, 3).ToArray());
 	}
@@ -77,8 +77,8 @@ private Vector2 prevPos;
 	{
 		Vector2 mousePos = GetGlobalMousePosition();
 
-		if (Position.DistanceTo(mousePos) > DecelerationDistance) speed = Mathf.Clamp(speed + Acceleration, 0, MaxSpeed);
-		else speed = Mathf.Clamp(speed - Acceleration * 2, 0, MaxSpeed);
+		if (Position.DistanceTo(mousePos) > DecelerationDistance) speed = Math.Clamp(speed + Acceleration, 0, MaxSpeed);  
+		else speed = Math.Clamp(speed - Acceleration * 2, 0, MaxSpeed);
 
 		Position = Position.MoveToward(mousePos, speed * (float)delta);
 
@@ -87,7 +87,7 @@ private Vector2 prevPos;
 		if (Position - prevPos == Vector2.Zero) Stop();
 		else
 		{
-			UpdateInteractableShape();
+			UpdateInteractionPolygon();
 			Play();
 		}
 
@@ -97,7 +97,7 @@ private Vector2 prevPos;
 
 private void LoadMinawanData()
 {
-	Dictionary data = Manager.Load("minawan_settings");
+	Dictionary data = DataManager.Load("minawan_settings");
 
 	if (data == null)
 	{
@@ -105,7 +105,7 @@ private void LoadMinawanData()
 		return;
 	}
 
-	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == typeof(WalkiesMinawan)).ToArray();
+	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == GetType()).ToArray();
 	bool hasUnknownKey = false;
 
 	foreach (PropertyInfo property in properties)
@@ -126,15 +126,15 @@ private void LoadMinawanData()
 private void SaveMinawanData()
 {
 	Dictionary data = new Dictionary();
-	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == typeof(WalkiesMinawan)).ToArray();
+	PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).Where(p => p.DeclaringType == GetType()).ToArray();
 
 	foreach (PropertyInfo property in properties) data.Add(property.Name, (float)property.GetValue(this));
 
-	Manager.Save(data, "minawan_settings");
+	DataManager.Save(data, "minawan_settings");
 }
 
 
-	private void UpdateInteractableShape()
+	private void UpdateInteractionPolygon()
 	{
 		Vector2[] newPoints = new Vector2[passthroughPolygon.Length];
 
@@ -144,7 +144,7 @@ private void SaveMinawanData()
 	}
 
 
-	private void GeneratePassthroughPolygon()
+	private void GenerateInteractionPolygon()
 	{
 		Vector2 spriteHalfSideLength = SpriteFrames.GetFrameTexture("default", 0).GetSize() * MinaScale / 2;
 
@@ -157,9 +157,9 @@ private void SaveMinawanData()
 	}
 
 
-	private void OnClickMinawan(Node viewport, InputEvent evnt, int shape_idx)
+	private void OnClickMinawan(Node viewport, InputEvent @event, int shape_idx)
 	{
-		if (evnt.IsActionPressed("AltLeftClick")) actionMenu.Popup();
-		else if (evnt.IsActionPressed("LeftClick")) wanWanSFX.Play();
+		if (@event.IsActionPressed("AltLeftClick")) actionMenu.Popup();
+		else if (@event.IsActionPressed("LeftClick")) wanWanSFX.Play();
 	}
 }

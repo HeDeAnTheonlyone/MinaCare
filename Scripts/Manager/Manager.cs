@@ -8,12 +8,10 @@ public partial class Manager : Node
     public static Manager Singleton { get; private set; }
     public static Dictionary Settings { get; private set; } = new Dictionary
     {
-        //TODO change to true 
-        { "show_splash_screen", false },
+        { "show_splash_screen", true },
         { "language", TranslationServer.GetLocale() }
     };
-    public static Stack<string> LastScenes = new Stack<string>();
-
+    public static List<string> LastScenes = new List<string>();
 
 
     public override void _Ready()
@@ -36,16 +34,16 @@ public partial class Manager : Node
     }
 
 
-    private void SaveSettings() => Save(Settings, "general_settings");
+    private void SaveSettings() => DataManager.Save(Settings, "general_settings");
 
 
     private void LoadSettings()
     {
-        Dictionary data = Load("general_settings");
+        Dictionary data = DataManager.Load("general_settings");
         
         if (data == null)
         {
-            Save(Settings, "general_settings");
+            DataManager.Save(Settings, "general_settings");
             return;
         }
 
@@ -65,35 +63,6 @@ public partial class Manager : Node
         if (hasUnknownKey) SaveSettings();
 
         TranslationServer.SetLocale((string)Settings["language"]);
-    }
-
-
-    /// <summary>
-    /// Loads the file of the given name and returns the data as a dictionary.
-    /// </summary>
-    /// <param name="fileName"></param>
-    /// <returns>Data as dictionary or null if it fails.</returns>
-    public static Dictionary Load(string fileName)
-    {
-        string dataString;
-
-        using (FileAccess file = FileAccess.Open($"user://{fileName}.json", FileAccess.ModeFlags.Read))
-        {
-            if (FileAccess.GetOpenError() != Error.Ok) return null;
-
-            dataString = file.GetAsText();
-        }
-
-        return (Dictionary)Json.ParseString(dataString);
-    }
-
-
-    public static void Save(Dictionary data, string fileName)
-    {
-        using (FileAccess file = FileAccess.Open($"user://{fileName}.json", FileAccess.ModeFlags.Write))
-        {
-            file.StoreString(Json.Stringify(data, "\t"));
-        }
     }
 
 
@@ -119,8 +88,8 @@ public partial class Manager : Node
 
     public static void SwitchScene(string sceneName)
     {
-        LastScenes.Push(Singleton.GetTree().Root.GetChildren().First(node => node.Name != "Manager").Name);
-        //TODO add a check to prevent a longer history than 100 entries
+        LastScenes.Add(Singleton.GetTree().Root.GetChildren().First(node => node.Name != "Manager").Name);
+        if (LastScenes.Count > 20) LastScenes.RemoveAt(0);
 
         Singleton.GetTree().CallDeferred("change_scene_to_file", $"res://Scenes/{sceneName}.tscn");
     }

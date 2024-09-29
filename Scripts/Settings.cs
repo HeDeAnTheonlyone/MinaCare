@@ -10,8 +10,8 @@ public partial class Settings : Control
 
 	public override void _Ready()
 	{
-		splashScreen = GetNode<CheckButton>("MarginContainer/ScrollContainer/VBoxContainer/SplashScreen");
-		language = GetNode<OptionButton>("MarginContainer/ScrollContainer/VBoxContainer/Language");
+		splashScreen = GetNode<CheckButton>("MarginContainer/ScrollContainer/OptionsList/SplashScreen/Input");
+		language = GetNode<OptionButton>("MarginContainer/ScrollContainer/OptionsList/Language/Input");
 		language_codes = TranslationServer.GetLoadedLocales();
 
 		SetUpWindow();
@@ -39,7 +39,7 @@ public partial class Settings : Control
 	}
 
 
-	private void SaveSettings() => Manager.Save(Manager.Settings, "general_settings");
+	private void SaveSettings() => DataManager.Save(Manager.Settings, "general_settings");
 
 
 	private void OnSplashScreenToggle(bool value) => Manager.Settings["show_splash_screen"] = value;

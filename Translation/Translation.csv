@@ -1,18 +1,16 @@
-key,en,de
+key,en,de,es,fr
 
-GENERAL_SETTINGS,General Settings,Allgemeine Einstellungen
-MINAWAN_SETTINGS,Minawan Settings,Minawan Einstellungen
-WALKIES,Walkies,Gassigehen
-CHURCH_OF_ORBER,Church of Orber,Orber Kirche
-BACK,Back,Zurück
+GENERAL_SETTINGS,General Settings,Allgemeine Einstellungen,Configuración General,Affichage Général
+MINAWAN_SETTINGS,Minawan Settings,Minawan Einstellungen,Configuración Minawan,Menu d'Actions Minawan
+WALKIES,Walkies,Gassigehen,Paseos,Chevauchées
+CHURCH_OF_ORBER,Church of Orber,Orber Kirche,Iglesia de Orber,Église d'Orber
+BACK,Back,Zurück,Volver,Retourner
 
+MINAWAN_ACTION_MENU,Minawan Actions Menu,Minawan Aktionsmenü,Menu de Acciones de Minawan,Menu des Actions Minawan
+SCALE,Scale,Maßstab,Escala,Échelle
+MAX_SPEED,Max Speed,Max. Geschwinigkeit,Velocidad Máxima,Vitesse Maximale
+ACCELERATION,Acceleration,Beschleunigung,Aceleración,Accélération
+DECELERATION_DISTANCE,Deceleration Distance,Verlangsamungs Distanz,Distancia de Desaceleración,Distanciation de Ralentissement
 
-MINAWAN_ACTION_MENU,Minawan Actions Menu,Minawan Aktionsmenü
-SCALE,Scale,Maßstab
-MAX_SPEED,Max Speed,Max. Geschwinigkeit
-ACCELERATION,Acceleration,Beschleunigung
-DECELERATION_DISTANCE,Deceleration Distance,Verlangsamungs Distanz
-
-
-
-SHOW_SPLASH_SCREEN,Show Splash Screen,Begrüßungsbildschirm Anzeigen
+SHOW_SPLASH_SCREEN,Show Splash Screen,Begrüßungsbildschirm Anzeigen,Mostrar Pantalla de Bienvenida,Afficher l'écran de bienvenue
+LANGUAGE,Language,Sprache,Idioma,Langue

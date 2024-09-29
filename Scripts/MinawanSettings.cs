@@ -1,10 +1,21 @@
+using System;
 using System.Linq;
+using System.Reflection;
 using Godot;
 using Godot.Collections;
 
 public partial class MinawanSettings : Control
 {
-	private LineEdit leMinaScale;
+    private float minaScale;
+    private float MinaScale { get => minaScale; set => minaScale = Math.Clamp(value, 0.05f, 2f); }
+	private float maxSpeed;
+    private float MaxSpeed { get => maxSpeed; set => maxSpeed = Math.Clamp(value, 0f, 1000f); }
+	private float acceleration;
+    private float Acceleration { get => acceleration; set => acceleration = Math.Clamp(value, 0f, 100f); }
+	private float decelerationDistance;
+    private float DecelerationDistance { get => decelerationDistance; set => decelerationDistance = Math.Clamp(value, 0f, 1000f); }
+
+    private LineEdit leMinaScale;
 	private HSlider hsMinaScale;
 	private LineEdit leMaxSpeed;
 	private HSlider hsMaxSpeed;
@@ -15,22 +26,27 @@ public partial class MinawanSettings : Control
 
 
 
-	public override void _Ready()
+    public override void _Ready()
 	{
-		leMinaScale = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer/LineEdit");
-		hsMinaScale = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer/HSlider");
+		leMinaScale = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/Scale/Input/LineEdit");
+		hsMinaScale = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/Scale/Input/HSlider");
 
-		leMaxSpeed = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer/LineEdit");
-		hsMaxSpeed = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer/HSlider");
+		leMaxSpeed = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/MaxSpeed/Input/LineEdit");
+		hsMaxSpeed = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/MaxSpeed/Input/HSlider");
 		
-		leAcceleration = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer/LineEdit");
-		hsAcceleration = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer/HSlider");
+		leAcceleration = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/Acceleration/Input/LineEdit");
+		hsAcceleration = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/Acceleration/Input/HSlider");
 		
-		leDecelerationDistance = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer/LineEdit");
-		hsDecelerationDistance = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer/HSlider");
+		leDecelerationDistance = GetNode<LineEdit>("MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/Input/LineEdit");
+		hsDecelerationDistance = GetNode<HSlider>("MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/Input/HSlider");
 
 		SetUpWindow();
 		FetchSettings();
+
+		OnMinaScaleChange(MinaScale);
+		OnMaxSpeedChange(MaxSpeed);
+		OnAccelerationChange(Acceleration);
+		OnDecelerationDistanceChange(DecelerationDistance);
 	}
 
 
@@ -43,64 +59,80 @@ public partial class MinawanSettings : Control
 
 	private void FetchSettings()
 	{
-		Dictionary data = Manager.Load("minawan_settings");
-		
-		if (data == null) return;
+		GD.Print("FETCH");
 
-		//TODO implement a method that uses reflection 
-		foreach (string key in data.Keys.ToArray())
+		Dictionary data = DataManager.Load("minawan_settings");
+
+		if (data == null)
 		{
-			switch(key)
-			{
-				case "MinaScale":
-					hsMinaScale.Value = (float)data[key];
-					break;
-
-				case "MaxSpeed":
-					hsMaxSpeed.Value = (float)data[key];
-					break;
-
-				case "Acceleration":
-					hsAcceleration.Value = (float)data[key];
-					break;
-
-				case "DecelerationDistance":
-					hsDecelerationDistance.Value = (float)data[key];
-					break;
-			}
+			SaveSettings();
+			return;
 		}
-	}
 
+		PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.NonPublic).Where(p => p.DeclaringType == GetType()).ToArray();
+		bool hasUnknownKey = false;
 
-	private void SaveSetings()
-	{
-		Dictionary data = new Dictionary
+		foreach (PropertyInfo property in properties)
 		{
-			{ "MinaScale", hsMinaScale.Value },
-			{ "MaxSpeed", hsMaxSpeed.Value },
-			{ "Acceleration", hsAcceleration.Value },
-			{ "DecelerationDistance", hsDecelerationDistance.Value }
-		};
+			if (!data.ContainsKey(property.Name))
+			{
+				hasUnknownKey = true;
+				continue;
+			}
 
-		Manager.Save(data, "minawan_settings");
+			GetType().GetProperty(property.Name, BindingFlags.Instance | BindingFlags.NonPublic).SetValue(this, (float)data[property.Name]);
+		}
+
+		if (hasUnknownKey) SaveSettings();
 	}
 
 
-	private void OnMinaScaleChange(float value)	=> leMinaScale.Text = value.ToString();
+	private void SaveSettings()
+	{
+		Dictionary data = new Dictionary();
+		PropertyInfo[] properties = GetType().GetProperties(BindingFlags.Instance | BindingFlags.NonPublic).Where(p => p.DeclaringType == GetType()).ToArray();
+
+		foreach (PropertyInfo property in properties) data.Add(property.Name, (float)property.GetValue(this));
+
+		DataManager.Save(data, "minawan_settings");
+	}
 
 
-	private void OnMaxSpeedChange(float value)	=> leMaxSpeed.Text = value.ToString();
-	
-	
-	private void OnAccelerationChange(float value)	=> leAcceleration.Text = value.ToString();
+	private void OnMinaScaleChange(float value)
+    {
+        MinaScale = value;
+		hsMinaScale.Value = MinaScale;
+		leMinaScale.Text = MinaScale.ToString().Replace(',', '.');
+    }
 
 
-	private void OnDecelerationDistanceChange(float value)	=> leDecelerationDistance.Text = value.ToString();
+    private void OnMaxSpeedChange(float value)
+    {
+		MaxSpeed = value;
+		hsMaxSpeed.Value = MaxSpeed;
+		leMaxSpeed.Text = MaxSpeed.ToString().Replace(',', '.');
+    }
+
+
+    private void OnAccelerationChange(float value)
+    {
+        Acceleration = value;
+		hsAcceleration.Value = Acceleration;
+        leAcceleration.Text = Acceleration.ToString().Replace(',', '.');
+    }
+
+
+    private void OnDecelerationDistanceChange(float value)
+    {
+        DecelerationDistance = value;
+		hsDecelerationDistance.Value = DecelerationDistance;
+        leDecelerationDistance.Text = DecelerationDistance.ToString().Replace(',', '.');
+    }
 
 
 	private void OnBackPressed()
 	{
-		SaveSetings();
+		SaveSettings();
 		Manager.SwitchScene("Walkies");
 	}
 }

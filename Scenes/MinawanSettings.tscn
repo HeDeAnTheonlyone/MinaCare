@@ -19,7 +19,9 @@ offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
@@ -30,7 +32,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
-[node name="Scale" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+[node name="Scale" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/Scale"]
@@ -38,38 +40,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "SCALE"
 label_settings = ExtResource("2_exe01")
-horizontal_alignment = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/Scale"]
+[node name="Input" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList/Scale"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/Scale/Input"]
 layout_mode = 2
 size_flags_horizontal = 0
-focus_mode = 0
+focus_mode = 1
 alignment = 1
-max_length = 4
-editable = false
+max_length = 5
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/SettingsList/Scale/Input"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/Scale/Input"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 focus_mode = 0
+min_value = 0.05
 max_value = 2.0
 step = 0.01
+value = 0.05
 allow_greater = true
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
-[node name="MaxSpeed" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+[node name="MaxSpeed" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed"]
@@ -77,29 +83,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "MAX_SPEED"
 label_settings = ExtResource("2_exe01")
-horizontal_alignment = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed"]
+[node name="Input" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/Input"]
 layout_mode = 2
 size_flags_horizontal = 0
-focus_mode = 0
+focus_mode = 1
 alignment = 1
-max_length = 4
-editable = false
+max_length = 5
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/Input"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/Input"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 focus_mode = 0
 max_value = 1000.0
 allow_greater = true
@@ -107,7 +115,7 @@ allow_greater = true
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
-[node name="Acceleration" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+[node name="Acceleration" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration"]
@@ -115,27 +123,31 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "ACCELERATION"
 label_settings = ExtResource("2_exe01")
-horizontal_alignment = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration"]
+[node name="Input" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration/Input"]
 layout_mode = 2
 size_flags_horizontal = 0
-focus_mode = 0
+focus_mode = 1
 alignment = 1
-max_length = 4
-editable = false
+max_length = 5
+context_menu_enabled = false
+virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration/Input"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/Acceleration/Input"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 focus_mode = 0
 step = 0.5
 allow_greater = true
@@ -143,7 +155,7 @@ allow_greater = true
 [node name="HSeparator4" type="HSeparator" parent="MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
-[node name="DecelerationDistance" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
+[node name="DecelerationDistance" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance"]
@@ -151,38 +163,41 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "DECELERATION_DISTANCE"
 label_settings = ExtResource("2_exe01")
-horizontal_alignment = 1
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance"]
+[node name="Input" type="HBoxContainer" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/Input"]
 layout_mode = 2
 size_flags_horizontal = 0
-focus_mode = 0
+focus_mode = 1
 alignment = 1
 max_length = 5
-editable = false
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 middle_mouse_paste_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/Input"]
 layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/Input"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 focus_mode = 0
 max_value = 1000.0
 allow_greater = true
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 8
 mouse_filter = 2
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_right = 180
 
 [node name="Back" type="Button" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
@@ -191,8 +206,12 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 text = "BACK"
 
-[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/Scale/HSplitContainer/HSlider" to="." method="OnMinaScaleChange"]
-[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/HSplitContainer/HSlider" to="." method="OnMaxSpeedChange"]
-[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/Acceleration/HSplitContainer/HSlider" to="." method="OnAccelerationChange"]
-[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/HSplitContainer/HSlider" to="." method="OnDecelerationDistanceChange"]
+[connection signal="text_submitted" from="MarginContainer/ScrollContainer/SettingsList/Scale/Input/LineEdit" to="." method="OnMinaScaleChange"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/Scale/Input/HSlider" to="." method="OnMinaScaleChange"]
+[connection signal="text_submitted" from="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/Input/LineEdit" to="." method="OnMaxSpeedChange"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/MaxSpeed/Input/HSlider" to="." method="OnMaxSpeedChange"]
+[connection signal="text_submitted" from="MarginContainer/ScrollContainer/SettingsList/Acceleration/Input/LineEdit" to="." method="OnAccelerationChange"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/Acceleration/Input/HSlider" to="." method="OnAccelerationChange"]
+[connection signal="text_submitted" from="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/Input/LineEdit" to="." method="OnDecelerationDistanceChange"]
+[connection signal="value_changed" from="MarginContainer/ScrollContainer/SettingsList/DecelerationDistance/Input/HSlider" to="." method="OnDecelerationDistanceChange"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/Back" to="." method="OnBackPressed"]
