@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwo2aa328rjob"]
+
+[ext_resource type="Texture2D" uid="uid://bx103feq3x627" path="res://Assets/Sprites/WhiteSquare.png" id="1_3cs5s"]
+[ext_resource type="Texture2D" uid="uid://cp0rjbkuu6los" path="res://Assets/Sprites/Icons/FoodIcon.png" id="1_674ou"]
+[ext_resource type="Script" path="res://Scripts/Objects/StatusPanel.cs" id="1_mgwan"]
+[ext_resource type="Texture2D" uid="uid://ctq0a4l7kr1cm" path="res://Assets/Sprites/StatusBarTexture/SnackBar.png" id="1_t7v0h"]
+[ext_resource type="Texture2D" uid="uid://dnniv50suhl23" path="res://Assets/Sprites/Pray.png" id="2_oub8o"]
+[ext_resource type="Texture2D" uid="uid://gpiajrgq6uit" path="res://Assets/Sprites/StatusBarTexture/PrayerBar.png" id="3_6p26o"]
+[ext_resource type="Texture2D" uid="uid://cvv7od2e85jjg" path="res://Assets/Sprites/StatusBarTexture/FwootPuchBar.png" id="4_qd4y7"]
+[ext_resource type="Texture2D" uid="uid://b435sov4m22fu" path="res://Assets/Sprites/FwootPunch.png" id="5_bklgw"]
+
+[node name="StatusPanel" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_mgwan")
+
+[node name="BarList" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Snacks" type="VSplitContainer" parent="BarList"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 175
+dragger_visibility = 2
+
+[node name="Bar" type="TextureProgressBar" parent="BarList/Snacks"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+step = 0.1
+value = 36.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_top = 8
+stretch_margin_right = 9
+stretch_margin_bottom = 8
+texture_under = ExtResource("1_3cs5s")
+texture_progress = ExtResource("1_t7v0h")
+tint_under = Color(0, 0, 0, 0.392157)
+
+[node name="Icon" type="TextureRect" parent="BarList/Snacks"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_674ou")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="FwootPunch" type="VSplitContainer" parent="BarList"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 175
+
+[node name="Bar" type="TextureProgressBar" parent="BarList/FwootPunch"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+step = 0.1
+value = 36.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_top = 8
+stretch_margin_right = 9
+stretch_margin_bottom = 8
+texture_under = ExtResource("1_3cs5s")
+texture_progress = ExtResource("4_qd4y7")
+tint_under = Color(0, 0, 0, 0.392157)
+
+[node name="Icon" type="TextureRect" parent="BarList/FwootPunch"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("5_bklgw")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Prayers" type="VSplitContainer" parent="BarList"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 175
+
+[node name="Bar" type="TextureProgressBar" parent="BarList/Prayers"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+step = 0.1
+value = 36.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_top = 8
+stretch_margin_right = 9
+stretch_margin_bottom = 8
+texture_under = ExtResource("1_3cs5s")
+texture_progress = ExtResource("3_6p26o")
+tint_under = Color(0, 0, 0, 0.392157)
+
+[node name="Icon" type="TextureRect" parent="BarList/Prayers"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_oub8o")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Walkies" type="VSplitContainer" parent="BarList"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 175
+
+[node name="Bar" type="TextureProgressBar" parent="BarList/Walkies"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+step = 0.1
+value = 36.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_top = 8
+stretch_margin_right = 9
+stretch_margin_bottom = 8
+texture_under = ExtResource("1_3cs5s")
+texture_progress = ExtResource("1_t7v0h")
+tint_under = Color(0, 0, 0, 0.392157)
+
+[node name="Icon" type="TextureRect" parent="BarList/Walkies"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_674ou")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Tomfoolery" type="VSplitContainer" parent="BarList"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 175
+
+[node name="Bar" type="TextureProgressBar" parent="BarList/Tomfoolery"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 3
+step = 0.1
+value = 36.0
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_left = 9
+stretch_margin_top = 8
+stretch_margin_right = 9
+stretch_margin_bottom = 8
+texture_under = ExtResource("1_3cs5s")
+texture_progress = ExtResource("1_t7v0h")
+tint_under = Color(0, 0, 0, 0.392157)
+
+[node name="Icon" type="TextureRect" parent="BarList/Tomfoolery"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_674ou")
+expand_mode = 2
+stretch_mode = 5

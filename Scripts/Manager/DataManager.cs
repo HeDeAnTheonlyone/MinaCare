@@ -32,4 +32,13 @@ public class DataManager
             file.StoreString(Json.Stringify(data, "\t"));
         }
     }
+
+
+    //TODO: 
+    // - Init all Minawan stats
+    // - 
+    public static void NewGame()
+    {
+
+    }
 }

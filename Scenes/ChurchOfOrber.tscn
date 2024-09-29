@@ -1,8 +1,8 @@
 [gd_scene load_steps=72 format=3 uid="uid://0uih2hsiwldg"]
 
-[ext_resource type="Script" path="res://Scripts/ChurchOfOrber.cs" id="1_j3s27"]
+[ext_resource type="Script" path="res://Scripts/Scenes/ChurchOfOrber.cs" id="1_j3s27"]
 [ext_resource type="Texture2D" uid="uid://bupu7rgvdbxn1" path="res://Assets/Sprites/Orber.png" id="2_3m0gy"]
-[ext_resource type="Script" path="res://Scripts/Orber.cs" id="3_3073u"]
+[ext_resource type="Script" path="res://Scripts/Objects/Orber.cs" id="3_3073u"]
 [ext_resource type="PackedScene" uid="uid://bbyl74pb2qlsv" path="res://Assets/Models/ChurchRoom.glb" id="3_nwtr8"]
 [ext_resource type="Texture2D" uid="uid://lpts5mufwy73" path="res://Assets/Sprites/Chandelier.png" id="4_ur7ph"]
 [ext_resource type="Texture2D" uid="uid://4yoa6dtmw0c7" path="res://Assets/Sprites/Textures/BlackMarbleTiles.png" id="5_46k57"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cy5lcnfyx6118" path="res://Assets/Sprites/Textures/Wood.png" id="9_2r2vq"]
 [ext_resource type="Texture2D" uid="uid://bh4wyac74uumo" path="res://Assets/Sprites/WallCandle.png" id="10_2y4ec"]
 [ext_resource type="Texture2D" uid="uid://q3h2y40tha3" path="res://Assets/Sprites/MinaFallback/Stand.png" id="12_tfepe"]
-[ext_resource type="Script" path="res://Scripts/ChurchMinawan.cs" id="13_3j40u"]
+[ext_resource type="Script" path="res://Scripts/Objects/ChurchMinawan.cs" id="13_3j40u"]
 [ext_resource type="Texture2D" uid="uid://oe7jirkxvdi6" path="res://Assets/Sprites/MinaFallback/Walk.png" id="13_a60bc"]
 [ext_resource type="Texture2D" uid="uid://dnniv50suhl23" path="res://Assets/Sprites/Pray.png" id="13_fywnh"]
 
@@ -460,9 +460,9 @@ script = ExtResource("3_3073u")
 [node name="SpaceBg" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33.5367, -281.657)
 pixel_size = 0.4385
+double_sided = false
 sprite_frames = SubResource("SpriteFrames_k3uc5")
 autoplay = "default"
-frame_progress = 0.0703639
 
 [node name="ChurchRoom" parent="." instance=ExtResource("3_nwtr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -80)

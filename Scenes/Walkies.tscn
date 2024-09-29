@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpuat7h2hgetl"]
 
-[ext_resource type="Script" path="res://Scripts/Walkies.cs" id="1_f8lkg"]
+[ext_resource type="Script" path="res://Scripts/Scenes/Walkies.cs" id="1_f8lkg"]
 [ext_resource type="PackedScene" uid="uid://bj71puvunqr5m" path="res://Objects/WalkiesMinawan.tscn" id="1_iu4v8"]
 
 [node name="Walkies" type="Node2D"]

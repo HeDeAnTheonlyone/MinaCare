@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://8rv3w65eca5"]
 
-[ext_resource type="Script" path="res://Scripts/Splash.cs" id="1_30hdj"]
+[ext_resource type="Script" path="res://Scripts/Scenes/Splash.cs" id="1_30hdj"]
 [ext_resource type="Texture2D" uid="uid://dpbmak3qahp33" path="res://Assets/Sprites/Logos/MinawanProductions.png" id="1_732j3"]
 [ext_resource type="Texture2D" uid="uid://6h24cures8jw" path="res://Assets/Sprites/Logos/godot.png" id="2_p58cu"]
 [ext_resource type="AudioStream" uid="uid://bvgd7bwbsy3w8" path="res://Audio/Yippee.ogg" id="3_m8fnd"]

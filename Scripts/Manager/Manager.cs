@@ -12,12 +12,28 @@ public partial class Manager : Node
         { "language", TranslationServer.GetLocale() }
     };
     public static List<string> LastScenes = new List<string>();
+    public static Minawan MinawanStats { get; private set; } = new Minawan();
 
 
     public override void _Ready()
     {
         SingletonSetup();
         LoadSettings();
+    }
+
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("Escape"))
+        {
+            int count = LastScenes.Count;
+            
+            if (count > 0)
+            {
+                SwitchScene(LastScenes.Last());
+                LastScenes.RemoveAt(count - 1);
+            }
+        }
     }
 
 
@@ -30,7 +46,6 @@ public partial class Manager : Node
         SetPhysicsProcess(false);
 
         Engine.MaxFps = 60;
-        GetWindow().Unfocusable = true;
     }
 
 
@@ -88,8 +103,12 @@ public partial class Manager : Node
 
     public static void SwitchScene(string sceneName)
     {
-        LastScenes.Add(Singleton.GetTree().Root.GetChildren().First(node => node.Name != "Manager").Name);
-        if (LastScenes.Count > 20) LastScenes.RemoveAt(0);
+        string oldScene = Singleton.GetTree().Root.GetChildren().First(node => node.Name != "Manager").Name;
+        if (oldScene != "Splash")
+        {
+            LastScenes.Add(oldScene);
+            if (LastScenes.Count > 20) LastScenes.RemoveAt(0);
+        }
 
         Singleton.GetTree().CallDeferred("change_scene_to_file", $"res://Scenes/{sceneName}.tscn");
     }

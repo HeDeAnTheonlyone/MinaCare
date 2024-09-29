@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg26yidng6am0"]
 
-[ext_resource type="Script" path="res://Scripts/MinawanSettings.cs" id="1_0mabx"]
+[ext_resource type="Script" path="res://Scripts/Scenes/MinawanSettings.cs" id="1_0mabx"]
 [ext_resource type="LabelSettings" uid="uid://cmy2x6ggexv7s" path="res://Themes/SettingsLables.tres" id="2_exe01"]
 
 [node name="MinawanSettings" type="Control"]

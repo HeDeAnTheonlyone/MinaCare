@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://6l18k3cqecfp"]
 
-[ext_resource type="Script" path="res://Scripts/Settings.cs" id="1_gy7bh"]
+[ext_resource type="Script" path="res://Scripts/Scenes/Settings.cs" id="1_gy7bh"]
 [ext_resource type="LabelSettings" uid="uid://cmy2x6ggexv7s" path="res://Themes/SettingsLables.tres" id="2_w0xl6"]
 
 [node name="Settings" type="Control"]
