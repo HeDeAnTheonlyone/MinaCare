@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpeufb37sqg6s"
-path="res://.godot/imported/WanWan.png-c793753ca3842f9c35d6f19f71553f1f.ctex"
+uid="uid://bjn4a4qkfln7j"
+path="res://.godot/imported/MinawanIcon.png-fb35dcda6d71d26ffbb98f8395fddf88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/WanWan.png"
-dest_files=["res://.godot/imported/WanWan.png-c793753ca3842f9c35d6f19f71553f1f.ctex"]
+source_file="res://MinawanIcon.png"
+dest_files=["res://.godot/imported/MinawanIcon.png-fb35dcda6d71d26ffbb98f8395fddf88.ctex"]
 
 [params]
 

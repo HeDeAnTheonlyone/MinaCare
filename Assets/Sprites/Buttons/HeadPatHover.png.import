@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhgu4hx3anbjx"
-path="res://.godot/imported/RerollHover.png-e3b6d861e817c19cdfc718fa408e7895.ctex"
+uid="uid://85j3sat226sd"
+path="res://.godot/imported/HeadPatHover.png-06dc4ae8d6d6b7517e18702d6a251a82.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/RerollHover.png"
-dest_files=["res://.godot/imported/RerollHover.png-e3b6d861e817c19cdfc718fa408e7895.ctex"]
+source_file="res://Assets/Sprites/Buttons/HeadPatHover.png"
+dest_files=["res://.godot/imported/HeadPatHover.png-06dc4ae8d6d6b7517e18702d6a251a82.ctex"]
 
 [params]
 

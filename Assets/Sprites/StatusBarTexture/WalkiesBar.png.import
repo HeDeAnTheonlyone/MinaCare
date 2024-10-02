@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt4r866lelfvx"
-path="res://.godot/imported/WanWanHover.png-784b8b55a7847d0b3664cc92b407941c.ctex"
+uid="uid://c5drvkr2blh3i"
+path="res://.godot/imported/WalkiesBar.png-0d8bb7cce238e40e1e6d70d345c5268f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/WanWanHover.png"
-dest_files=["res://.godot/imported/WanWanHover.png-784b8b55a7847d0b3664cc92b407941c.ctex"]
+source_file="res://Assets/Sprites/StatusBarTexture/WalkiesBar.png"
+dest_files=["res://.godot/imported/WalkiesBar.png-0d8bb7cce238e40e1e6d70d345c5268f.ctex"]
 
 [params]
 

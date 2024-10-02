@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.3", "C#", "GL Compatibility")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="res://minawan_icon.png"
+config/icon="res://MinawanIcon.png"
 
 [autoload]
 
@@ -60,6 +60,10 @@ Escape={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Translation/Translation.en.translation", "res://Translation/Translation.de.translation", "res://Translation/Translation.es.translation", "res://Translation/Translation.fr.translation")
+
+[layer_names]
+
+2d_physics/layer_1="Poi"
 
 [rendering]
 

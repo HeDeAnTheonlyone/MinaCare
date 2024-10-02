@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs7iroub7f7e7"
-path="res://.godot/imported/Reroll.png-0aa8af20b8d22f5d555daeb045b14757.ctex"
+uid="uid://bt2d5mon6krc2"
+path="res://.godot/imported/TomfooleryBar.png-3e69a8b75491bd4abf13b363ef58b4cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/Reroll.png"
-dest_files=["res://.godot/imported/Reroll.png-0aa8af20b8d22f5d555daeb045b14757.ctex"]
+source_file="res://Assets/Sprites/StatusBarTexture/TomfooleryBar.png"
+dest_files=["res://.godot/imported/TomfooleryBar.png-3e69a8b75491bd4abf13b363ef58b4cf.ctex"]
 
 [params]
 

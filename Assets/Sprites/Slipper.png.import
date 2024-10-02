@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy5pmo34nbd2u"
-path="res://.godot/imported/GearMinawanHover.png-cc3bf67003a26fc98ba4c9f232a39d90.ctex"
+uid="uid://bnfi15dxr8lva"
+path="res://.godot/imported/Slipper.png-a977240445e30c2f78f46307e9cde5e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/GearMinawanHover.png"
-dest_files=["res://.godot/imported/GearMinawanHover.png-cc3bf67003a26fc98ba4c9f232a39d90.ctex"]
+source_file="res://Assets/Sprites/Slipper.png"
+dest_files=["res://.godot/imported/Slipper.png-a977240445e30c2f78f46307e9cde5e0.ctex"]
 
 [params]
 

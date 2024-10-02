@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjg5kipv0vc2u"
-path="res://.godot/imported/Gear.png-f3d3428949335f3415072602971f4200.ctex"
+uid="uid://bs7iroub7f7e7"
+path="res://.godot/imported/Reroll.png-bcf78a0a89764a988fd7aa1626b87fe4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/Gear.png"
-dest_files=["res://.godot/imported/Gear.png-f3d3428949335f3415072602971f4200.ctex"]
+source_file="res://Assets/Sprites/Buttons/Reroll.png"
+dest_files=["res://.godot/imported/Reroll.png-bcf78a0a89764a988fd7aa1626b87fe4.ctex"]
 
 [params]
 

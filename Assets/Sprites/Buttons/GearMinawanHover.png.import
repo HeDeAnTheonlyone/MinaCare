@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjn4a4qkfln7j"
-path="res://.godot/imported/minawan_icon.png-dc0570ea908a8f6e638eaf5b4c0f7760.ctex"
+uid="uid://cy5pmo34nbd2u"
+path="res://.godot/imported/GearMinawanHover.png-221673405492cd2d43430da5ed3e5800.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://minawan_icon.png"
-dest_files=["res://.godot/imported/minawan_icon.png-dc0570ea908a8f6e638eaf5b4c0f7760.ctex"]
+source_file="res://Assets/Sprites/Buttons/GearMinawanHover.png"
+dest_files=["res://.godot/imported/GearMinawanHover.png-221673405492cd2d43430da5ed3e5800.ctex"]
 
 [params]
 

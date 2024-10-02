@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqg2yoqvg7dm1"
-path="res://.godot/imported/Notes.png-fa70b51aa75decce05e26c2a5c72d34a.ctex"
+uid="uid://dsmm5xpfbb7y5"
+path="res://.godot/imported/GearMinawan.png-f7bd3454c8a32a7b505a532ad35acd87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/Notes.png"
-dest_files=["res://.godot/imported/Notes.png-fa70b51aa75decce05e26c2a5c72d34a.ctex"]
+source_file="res://Assets/Sprites/Buttons/GearMinawan.png"
+dest_files=["res://.godot/imported/GearMinawan.png-f7bd3454c8a32a7b505a532ad35acd87.ctex"]
 
 [params]
 

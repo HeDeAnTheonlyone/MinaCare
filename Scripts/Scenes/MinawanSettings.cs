@@ -59,8 +59,6 @@ public partial class MinawanSettings : Control
 
 	private void FetchSettings()
 	{
-		GD.Print("FETCH");
-
 		Dictionary data = DataManager.Load("minawan_settings");
 
 		if (data == null)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca7ak8ib2ocu2"
-path="res://.godot/imported/HeadPat.png-893ac889f673dea267317388f1a59f8e.ctex"
+uid="uid://2pvdfdlbyjp3"
+path="res://.godot/imported/GearHover.png-38cbd5e557bf75c42fa8216530c09354.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/HeadPat.png"
-dest_files=["res://.godot/imported/HeadPat.png-893ac889f673dea267317388f1a59f8e.ctex"]
+source_file="res://Assets/Sprites/Buttons/GearHover.png"
+dest_files=["res://.godot/imported/GearHover.png-38cbd5e557bf75c42fa8216530c09354.ctex"]
 
 [params]
 

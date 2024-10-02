@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwo2aa328rjob"]
+[gd_scene load_steps=13 format=3 uid="uid://bwo2aa328rjob"]
 
 [ext_resource type="Texture2D" uid="uid://bx103feq3x627" path="res://Assets/Sprites/WhiteSquare.png" id="1_3cs5s"]
 [ext_resource type="Texture2D" uid="uid://cp0rjbkuu6los" path="res://Assets/Sprites/Icons/FoodIcon.png" id="1_674ou"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://gpiajrgq6uit" path="res://Assets/Sprites/StatusBarTexture/PrayerBar.png" id="3_6p26o"]
 [ext_resource type="Texture2D" uid="uid://cvv7od2e85jjg" path="res://Assets/Sprites/StatusBarTexture/FwootPuchBar.png" id="4_qd4y7"]
 [ext_resource type="Texture2D" uid="uid://b435sov4m22fu" path="res://Assets/Sprites/Icons/FwootPunch.png" id="5_bklgw"]
+[ext_resource type="Texture2D" uid="uid://c5drvkr2blh3i" path="res://Assets/Sprites/StatusBarTexture/WalkiesBar.png" id="9_ppbnl"]
+[ext_resource type="Texture2D" uid="uid://cyulg8in05tlc" path="res://Assets/Sprites/Icons/Walkies.png" id="10_5cfj2"]
+[ext_resource type="Texture2D" uid="uid://bt2d5mon6krc2" path="res://Assets/Sprites/StatusBarTexture/TomfooleryBar.png" id="11_nx0it"]
+[ext_resource type="Texture2D" uid="uid://b7dm6ba7nd1hd" path="res://Assets/Sprites/Icons/Tomfoolery.png" id="12_rsoyw"]
 
 [node name="StatusPanel" type="MarginContainer"]
 anchors_preset = 15
@@ -130,13 +134,13 @@ stretch_margin_top = 8
 stretch_margin_right = 9
 stretch_margin_bottom = 8
 texture_under = ExtResource("1_3cs5s")
-texture_progress = ExtResource("1_t7v0h")
+texture_progress = ExtResource("9_ppbnl")
 tint_under = Color(0, 0, 0, 0.392157)
 
 [node name="Icon" type="TextureRect" parent="BarList/Walkies"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("1_674ou")
+texture = ExtResource("10_5cfj2")
 expand_mode = 2
 stretch_mode = 5
 
@@ -158,12 +162,12 @@ stretch_margin_top = 8
 stretch_margin_right = 9
 stretch_margin_bottom = 8
 texture_under = ExtResource("1_3cs5s")
-texture_progress = ExtResource("1_t7v0h")
+texture_progress = ExtResource("11_nx0it")
 tint_under = Color(0, 0, 0, 0.392157)
 
 [node name="Icon" type="TextureRect" parent="BarList/Tomfoolery"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("1_674ou")
+texture = ExtResource("12_rsoyw")
 expand_mode = 2
 stretch_mode = 5

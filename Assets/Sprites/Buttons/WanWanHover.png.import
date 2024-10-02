@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnfi15dxr8lva"
-path="res://.godot/imported/Slipper.png-d53c32c984320b296c0bd5cdfa68638b.ctex"
+uid="uid://dt4r866lelfvx"
+path="res://.godot/imported/WanWanHover.png-4f47e0ffed3652f0a65c2e07891062f4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Icons/Slipper.png"
-dest_files=["res://.godot/imported/Slipper.png-d53c32c984320b296c0bd5cdfa68638b.ctex"]
+source_file="res://Assets/Sprites/Buttons/WanWanHover.png"
+dest_files=["res://.godot/imported/WanWanHover.png-4f47e0ffed3652f0a65c2e07891062f4.ctex"]
 
 [params]
 
