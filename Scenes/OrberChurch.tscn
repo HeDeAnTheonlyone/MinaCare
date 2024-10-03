@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cy5lcnfyx6118" path="res://Assets/Sprites/Textures/Wood.png" id="9_2r2vq"]
 [ext_resource type="Texture2D" uid="uid://bh4wyac74uumo" path="res://Assets/Sprites/WallCandle.png" id="10_2y4ec"]
 [ext_resource type="Texture2D" uid="uid://q3h2y40tha3" path="res://Assets/Sprites/MinaFallback/Stand.png" id="12_tfepe"]
-[ext_resource type="Script" path="res://Scripts/Objects/ChurchMinawan.cs" id="13_3j40u"]
+[ext_resource type="Script" path="res://Scripts/Objects/Minawan/ChurchMinawan.cs" id="13_3j40u"]
 [ext_resource type="Texture2D" uid="uid://oe7jirkxvdi6" path="res://Assets/Sprites/MinaFallback/Walk.png" id="13_a60bc"]
 [ext_resource type="Texture2D" uid="uid://dnniv50suhl23" path="res://Assets/Sprites/Icons/Pray.png" id="13_fywnh"]
 
@@ -435,7 +435,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="ChurchOfOrber" type="Node3D"]
+[node name="OrberChurch" type="Node3D"]
 script = ExtResource("1_j3s27")
 
 [node name="Camera3D" type="Camera3D" parent="."]

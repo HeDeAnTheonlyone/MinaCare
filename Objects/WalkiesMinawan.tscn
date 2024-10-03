@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bj71puvunqr5m"]
+[gd_scene load_steps=26 format=3 uid="uid://bj71puvunqr5m"]
 
 [ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_4k01c"]
-[ext_resource type="Script" path="res://Scripts/Objects/WalkiesMinawan.cs" id="2_mkkxb"]
+[ext_resource type="Script" path="res://Scripts/Objects/Minawan/WalkiesMinawan.cs" id="2_mkkxb"]
 [ext_resource type="AudioStream" uid="uid://41d2p08vx48v" path="res://Audio/WanWan.ogg" id="3_lmcl5"]
 [ext_resource type="Script" path="res://Scripts/Objects/MinawanActionMenu.cs" id="4_37jw1"]
 [ext_resource type="Texture2D" uid="uid://cjg5kipv0vc2u" path="res://Assets/Sprites/Buttons/Gear.png" id="5_5arv5"]
@@ -9,9 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cy5pmo34nbd2u" path="res://Assets/Sprites/Buttons/GearMinawanHover.png" id="6_bugie"]
 [ext_resource type="Texture2D" uid="uid://dsmm5xpfbb7y5" path="res://Assets/Sprites/Buttons/GearMinawan.png" id="6_j7g78"]
 [ext_resource type="Texture2D" uid="uid://2pvdfdlbyjp3" path="res://Assets/Sprites/Buttons/GearHover.png" id="8_6shgh"]
-[ext_resource type="Texture2D" uid="uid://cqg2yoqvg7dm1" path="res://Assets/Sprites/Notes.png" id="8_c7wc2"]
+[ext_resource type="Texture2D" uid="uid://dfvlqnf5hlscx" path="res://Assets/Sprites/Buttons/Map.png" id="9_0hc6p"]
 [ext_resource type="Texture2D" uid="uid://dhgu4hx3anbjx" path="res://Assets/Sprites/Buttons/RerollHover.png" id="9_kxoro"]
 [ext_resource type="Texture2D" uid="uid://dpeufb37sqg6s" path="res://Assets/Sprites/Buttons/WanWan.png" id="9_lugw2"]
+[ext_resource type="Texture2D" uid="uid://cw75w3y566e10" path="res://Assets/Sprites/Buttons/MapHover.png" id="10_0hekj"]
 [ext_resource type="Texture2D" uid="uid://dt4r866lelfvx" path="res://Assets/Sprites/Buttons/WanWanHover.png" id="10_3ty2u"]
 [ext_resource type="Texture2D" uid="uid://ca7ak8ib2ocu2" path="res://Assets/Sprites/Buttons/HeadPat.png" id="11_gv12a"]
 [ext_resource type="Texture2D" uid="uid://85j3sat226sd" path="res://Assets/Sprites/Buttons/HeadPatHover.png" id="12_iu1aj"]
@@ -116,9 +117,11 @@ texture_pressed = ExtResource("5_5arv5")
 texture_hover = ExtResource("8_6shgh")
 stretch_mode = 4
 
-[node name="TEMP" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow1"]
+[node name="Map" type="TextureButton" parent="ActionMenu/OptionsList/OptionsRow1"]
 layout_mode = 2
-texture_normal = ExtResource("8_c7wc2")
+texture_normal = ExtResource("9_0hc6p")
+texture_pressed = ExtResource("9_0hc6p")
+texture_hover = ExtResource("10_0hekj")
 
 [node name="HSeparator" type="HSeparator" parent="ActionMenu/OptionsList"]
 layout_mode = 2
@@ -164,7 +167,7 @@ sprite_frames = SubResource("SpriteFrames_a0lak")
 [connection signal="close_requested" from="ActionMenu" to="ActionMenu" method="OnCloseRequest"]
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow1/MinawanSettings" to="ActionMenu" method="OnMinawanSettingsPressed"]
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow1/Settings" to="ActionMenu" method="OnSettingsPressed"]
-[connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow1/TEMP" to="ActionMenu" method="TEMP"]
+[connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow1/Map" to="ActionMenu" method="OnMapPressed"]
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow2/ChangeMinawan" to="ActionMenu" method="OnChangeMinawanPressed"]
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow2/WanWan" to="ActionMenu" method="OnWanActionPressed"]
 [connection signal="pressed" from="ActionMenu/OptionsList/OptionsRow2/PatPat" to="ActionMenu" method="OnPatActionPressed"]

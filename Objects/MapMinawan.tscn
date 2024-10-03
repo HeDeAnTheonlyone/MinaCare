@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce4xmnexifk2a"]
+
+[ext_resource type="SpriteFrames" uid="uid://c7qxwiobr4kwe" path="res://Resources/Animations/MinawanAnim.tres" id="1_enojs"]
+[ext_resource type="Script" path="res://Scripts/Objects/Minawan/MapMinawan.cs" id="2_ik422"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nx7v6"]
+size = Vector2(431, 131)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uiiu"]
+size = Vector2(433.333, 133.333)
+
+[node name="MapMinawan" type="CharacterBody2D"]
+y_sort_enabled = true
+scale = Vector2(0.12, 0.12)
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("2_ik422")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_enojs")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+position = Vector2(7.5, 116.5)
+shape = SubResource("RectangleShape2D_nx7v6")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(8.33333, 116.667)
+shape = SubResource("RectangleShape2D_5uiiu")
+debug_color = Color(0.296439, 0.616694, 0.359382, 0.42)
+
+[node name="EnterInfo" type="RichTextLabel" parent="."]
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -2200.0
+offset_top = -600.0
+offset_right = -1760.0
+offset_bottom = -565.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10, 10)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]PRESS [img=32]res://Assets/Sprites/Icons/PressLeftButton.png[/img] TO ENTER[/center]"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[connection signal="area_entered" from="Hitbox" to="." method="EnterArea"]
+[connection signal="area_exited" from="Hitbox" to="." method="LeaveArea"]

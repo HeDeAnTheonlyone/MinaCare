@@ -31,10 +31,10 @@ public partial class MinawanActionMenu : Window
 	}
 
 
-	private void TEMP()
+	private void OnMapPressed()
 	{
 		AlwaysOnTop = false;
-		Manager.SwitchScene("StatusPanel");
+		Manager.SwitchScene("Map");
 	}
 
 

@@ -7,12 +7,12 @@ using System.Reflection;
 
 
 
-public partial class WalkiesMinawan : AnimatedSprite2D
+public partial class WalkiesMinawan : AnimatedSprite2D, IMinawan
 {
-[Export] public float MinaScale { get; set; } = 0.2f;
-[Export] public float MaxSpeed { get; set; } = 250f;
-[Export] public float Acceleration { get; set; } = 5f;
-[Export] public float DecelerationDistance { get; set; } = 250f;
+public float MinaScale { get; set; } = 0.2f;
+public float MaxSpeed { get; set; } = 250f;
+public float Acceleration { get; set; } = 5f;
+public float DecelerationDistance { get; set; } = 250f;
 private Vector2[] interactablePolygon;
 private AnimatedSprite2D patPat;
 private AudioStreamPlayer wanWanSFX;
@@ -34,7 +34,7 @@ private SelectedAction action = SelectedAction.Wan;
 		// summonShape = GetNode<Line2D>("../SummonShape");
 		actionMenu = GetNode<MinawanActionMenu>("ActionMenu");
 		patPat = GetNode<AnimatedSprite2D>("PatPat");
-		actionMenu.RequestChangeMinawan += UseRandomMinawanTexture;
+		actionMenu.RequestChangeMinawan += () => IMinawan.UseRandomMinawanTexture(SpriteFrames);
 		actionMenu.SelectWanAction += () => action = SelectedAction.Wan;
 		actionMenu.SelectPatAction += () => action = SelectedAction.Pat;
 		window = GetWindow();
@@ -49,7 +49,7 @@ private SelectedAction action = SelectedAction.Wan;
 
     public override void _ExitTree()
     {
-        actionMenu.RequestChangeMinawan -= UseRandomMinawanTexture;
+        actionMenu.RequestChangeMinawan -= () => IMinawan.UseRandomMinawanTexture(SpriteFrames);
 		actionMenu.SelectWanAction -= () => action = SelectedAction.Wan;
 		actionMenu.SelectPatAction -= () => action = SelectedAction.Pat;
 	}
@@ -68,25 +68,6 @@ private SelectedAction action = SelectedAction.Wan;
 	}
 
 
-	private void UseRandomMinawanTexture()
-	{
-		DirAccess minawanCollectionDir = DirAccess.Open("./Minawan");
-
-		if (minawanCollectionDir == null) return;
-
-		string[] availableMinawans = minawanCollectionDir.GetDirectories();
-		var rng = new Random();
-		string minawan = availableMinawans[rng.Next(0, availableMinawans.Length)];
-
-		string[] texturesFiles = DirAccess.Open($"./Minawan/{minawan}").GetFiles();
-
-		if (!(texturesFiles.Contains("Stand.png") && texturesFiles.Contains("Walk.png"))) return;
-
-		SpriteFrames.SetFrame("default", 0, ImageTexture.CreateFromImage(Image.LoadFromFile($"./Minawan/{minawan}/Stand.png")));
-		SpriteFrames.SetFrame("default", 1, ImageTexture.CreateFromImage(Image.LoadFromFile($"./Minawan/{minawan}/Walk.png")));
-	}
-
-
 	private void MoveMinawan(float delta)
 	{
 		Vector2 mousePos = GetGlobalMousePosition();
@@ -98,7 +79,7 @@ private SelectedAction action = SelectedAction.Wan;
 
 		Scale = mousePos.X - Position.X > 0 ? new Vector2(MinaScale, MinaScale) : Scale = new Vector2(-MinaScale, MinaScale); ;
 
-		if (Position - prevPos == Vector2.Zero) Stop();
+		if (Position == prevPos) Stop();
 		else
 		{
 			UpdateInteractablePolygon();
@@ -173,8 +154,8 @@ private void SaveMinawanData()
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event.IsActionPressed("AltLeftClick")) actionMenu.Popup();
-		else if (@event.IsActionPressed("LeftClick"))
+		if (@event.IsActionPressed("RightClick")) actionMenu.Popup();
+		if (@event.IsActionPressed("LeftClick"))
 		{
 			switch (action)
 			{

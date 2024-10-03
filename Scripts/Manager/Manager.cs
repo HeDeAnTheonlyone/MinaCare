@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Godot;
 using Godot.Collections;
@@ -13,13 +12,24 @@ public partial class Manager : Node
         { "language", TranslationServer.GetLocale() }
     };
     public static List<string> LastScenes = new List<string>();
-    public static Minawan MinawanStats { get; private set; } = new Minawan();
+    public static MinawanStats MinawanStats { get; private set; } = new MinawanStats();
 
 
     public override void _Ready()
     {
         SingletonSetup();
+
+        int fps = 60;
+
+        for (int i = 0; i < DisplayServer.GetScreenCount() - 1; i++)
+        {
+            int newFps = (int)DisplayServer.ScreenGetRefreshRate(i);
+            if (newFps > fps) fps = newFps;
+        }
+        Engine.MaxFps = fps;
+
         LoadSettings();
+        ApplyDefaultWindowSettings();
     }
 
 
@@ -45,8 +55,6 @@ public partial class Manager : Node
         ProcessMode = ProcessModeEnum.Always;
         SetProcess(false);
         SetPhysicsProcess(false);
-
-        Engine.MaxFps = 60;
     }
 
 

@@ -1,6 +1,6 @@
 using Godot;
 
-public class Minawan
+public class MinawanStats
 {
     private float snacks = 100f;
     public float Snacks { get => snacks; set => snacks = value; }
